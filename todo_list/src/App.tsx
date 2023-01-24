@@ -1,7 +1,9 @@
 import React from "react";
-import Card, { CardVariant } from "./Components/card";
+import Card, { CardVariant } from "./Components/Card/card";
+import UserList from "./Components/UserList/userList";
 
 const App = () => {
+  const users = [{}];
   return (
     <div>
       <Card
@@ -13,6 +15,7 @@ const App = () => {
         <button>button</button>
         <div>gfdfgd</div>
       </Card>
+      <UserList users={[]} />
     </div>
   );
 };
