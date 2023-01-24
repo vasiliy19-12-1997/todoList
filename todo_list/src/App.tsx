@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Card, { CardVariant } from "./Components/Card/card";
 import { IUser } from "./Components/types/types";
 import UserList from "./Components/UserList/userList";
+import List from "./Components/List/list";
+import UserItem from "./Components/UserItem/userItem";
 
 const App = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -30,7 +32,10 @@ const App = () => {
         <button>button</button>
         <div>gfdfgd</div>
       </Card>
-      <UserList users={users} />
+      <List
+        items={users}
+        renderItem={(user: IUser) => <UserItem key={user.id} user={user} />}
+      />
     </div>
   );
 };
