@@ -1,6 +1,4 @@
-import React, { FC } from "react";
-import { IUser } from "../types/types";
-import UserItem from "../UserItem/userItem";
+import React from "react";
 //мы пишем дженнерик T потому мы ожиданием массив элементов, но они могут быть любого типа
 interface ListProps<T> {
   items: T[];
