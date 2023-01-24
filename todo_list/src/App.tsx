@@ -4,7 +4,12 @@ import Card, { CardVariant } from "./Components/card";
 const App = () => {
   return (
     <div>
-      <Card variant={CardVariant.primary} width="200px" height="200px">
+      <Card
+        onClick={(num) => console.log("click", num)}
+        variant={CardVariant.outlined}
+        width="200px"
+        height="200px"
+      >
         <button>button</button>
         <div>gfdfgd</div>
       </Card>
