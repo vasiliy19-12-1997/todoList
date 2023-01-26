@@ -27,7 +27,7 @@ const UserItemPage: FC = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(`/todos`)}>Back</button>
+      <button onClick={() => navigate(`/users`)}>Back</button>
       <h1>Страница пользователя {user?.name}</h1>
       <div>{user?.email}</div>
       <div>
