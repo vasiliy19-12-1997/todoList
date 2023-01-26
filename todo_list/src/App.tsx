@@ -7,7 +7,7 @@ import List from "./Components/List/list";
 import UserItem from "./Components/UserItem/userItem";
 import TodoItem from "./Components/TodoItem/todoItem";
 import EventsExample from "./Components/Events/eventsExample";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import UserPage from "./Components/UserPage/userPage";
 import TodosPage from "./Components/TodosPage/todosPage";
 import { Link } from "react-router-dom";
@@ -24,6 +24,7 @@ const App = () => {
         <Route path="/todos" element={<TodosPage />}></Route>
         <Route path="/users/:id" element={<UserItemPage />}></Route>
         <Route path="/todos/:id" element={<TodoItemPage />}></Route>
+        <Route path="/*" element={<Navigate to="/todos" replace />} />
       </Routes>
     </BrowserRouter>
   );
