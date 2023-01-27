@@ -6,6 +6,7 @@ import axios from "axios";
 import List from "./Components/List/list";
 import UserItem from "./Components/UserItem/userItem";
 import TodoItem from "./Components/TodoItem/todoItem";
+import EventsExample from "./Components/EventsExample/eventsExample";
 
 const App = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -44,6 +45,7 @@ const App = () => {
   };
   return (
     <div>
+      <EventsExample />
       <Card
         onClick={() => console.log("click")}
         variant={CardVariant.outlined}
