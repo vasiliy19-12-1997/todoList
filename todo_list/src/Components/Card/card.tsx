@@ -1,16 +1,34 @@
-import React, { FC } from "react";
+import React, { FC, PropsWithChildren, useState } from "react";
 
-const Card: FC = () => {
+export enum CardVariant {
+  outlined = "outlined",
+  primary = "primary",
+}
+interface CardProps {
+  width?: string;
+  height?: string;
+  variant: CardVariant;
+  onClick: (num: number) => void;
+}
+const Card: FC<PropsWithChildren<CardProps>> = ({
+  width,
+  height,
+  variant,
+  onClick,
+  children,
+}) => {
+  const [state, setState] = useState(0);
   return (
-    <div>
-      <div
-        style={{
-          width: "200px",
-          height: "200px",
-          border: "3px solid teal",
-          background: "blue",
-        }}
-      ></div>
+    <div
+      style={{
+        width,
+        height,
+        border: variant === CardVariant.outlined ? "3px solid black" : "none",
+        background: variant === CardVariant.primary ? "lightgray" : "",
+      }}
+      onClick={() => onClick(state)}
+    >
+      {children}
     </div>
   );
 };
