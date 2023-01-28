@@ -14,7 +14,7 @@ const EventsExample: FC = () => {
   };
   const leaveHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setIsDrag(true);
+    setIsDrag(false);
   };
   const dragWithPreventHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ const EventsExample: FC = () => {
         style={{
           width: "200px",
           height: "200px",
-          background: isDrag ? "blue" : "red",
+          background: "red",
         }}
       ></div>
       <div
@@ -48,7 +48,7 @@ const EventsExample: FC = () => {
         style={{
           width: "200px",
           height: "200px",
-          background: "red",
+          background: isDrag ? "blue" : "red",
           marginTop: "20px",
         }}
       ></div>
