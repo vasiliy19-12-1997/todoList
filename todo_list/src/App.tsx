@@ -1,19 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Card, { CardVariant } from "./Components/Card/card";
-import { ITodo, IUser } from "./Components/types/types";
 // import UserList from "./Components/UserList/userList";
-import List from "./Components/List/list";
-import UserItem from "./Components/UserItem/userItem";
-import TodoItem from "./Components/TodoItem/todoItem";
-import EventsExample from "./Components/Events/eventsExample";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import UserPage from "./Components/UserPage/userPage";
-import TodosPage from "./Components/TodosPage/todosPage";
-import { Link } from "react-router-dom";
+
 import Navbar from "./Components/Navbar/navbar";
-import UserItemPage from "./Components/UserItemPage/userItemPage";
-import TodoItemPage from "./Components/TodoItemPage/todoItemPage";
+import TodosPage from "./Components/pages/Todo/TodosPage/todosPage";
+import UserItemPage from "./Components/pages/User/UserItemPage/userItemPage";
+import UserPage from "./Components/pages/User/UserPage/userPage";
+import TodoItemPage from "./Components/pages/Todo/TodoItemPage/todoItemPage";
 
 const App = () => {
   return (

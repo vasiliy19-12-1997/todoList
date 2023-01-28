@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import List from "../List/list";
-import { ITodo, IUser } from "../types/types";
+import { FC, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import List from "../../../List/list";
+import { IUser } from "../../../types/types";
 import UserItem from "../UserItem/userItem";
 
 const UserPage: FC = () => {
@@ -23,16 +23,19 @@ const UserPage: FC = () => {
   };
 
   return (
-    <List
-      items={users}
-      renderItem={(user: IUser) => (
-        <UserItem
-          onClick={(user) => navigate("/users/" + user.id)}
-          key={user.id}
-          user={user}
-        />
-      )}
-    />
+    <div>
+      <button onClick={() => navigate(`/todos`)}>Todos</button>
+      <List
+        items={users}
+        renderItem={(user: IUser) => (
+          <UserItem
+            onClick={(user) => navigate("/users/" + user.id)}
+            key={user.id}
+            user={user}
+          />
+        )}
+      />
+    </div>
   );
 };
 
