@@ -7,63 +7,31 @@ import List from "./Components/List/list";
 import UserItem from "./Components/UserItem/userItem";
 import TodoItem from "./Components/TodoItem/todoItem";
 import EventsExample from "./Components/EventsExample/eventsExample";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserPage from "./Components/pages/UserPage/userPage";
+import TodoPage from "./Components/pages/TodoPage/todoPage";
+import { Link } from "react-router-dom";
+import TodoIdPage from "./Components/pages/TodoIdPage/todoIdPage";
+import UserIdPage from "./Components/pages/UserIdPage/userIdPage";
 
 const App = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [todos, setTodos] = useState<ITodo[]>([]);
 
-  useEffect(() => {
-    fetchUsers();
-    fetchTodo();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      setUsers(response.data);
-    } catch (error) {
-      alert(error);
-    }
-  };
-  const fetchTodo = async (limit = 10, page = 2) => {
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos",
-        {
-          params: {
-            _limit: limit,
-            _page: page,
-          },
-        }
-      );
-      setTodos(response.data);
-    } catch (error) {
-      alert(error);
-    }
-  };
   return (
-    <div>
-      <EventsExample />
-      <Card
-        onClick={() => console.log("click")}
-        variant={CardVariant.outlined}
-        width="200px"
-        height="200px"
-      >
-        <button>Click</button>
-      </Card>
-      {/* <UserList users={users} /> */}
-      <List
-        items={users}
-        renderItem={(user: IUser) => <UserItem user={user} key={user.id} />}
-      />
-      <List
-        items={todos}
-        renderItem={(todo: ITodo) => <TodoItem todo={todo} key={todo.id} />}
-      />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Link to="/todos" />
+        <Link to="/users" />
+      </div>
+
+      <Routes>
+        <Route path="/users" element={<UserPage />} />
+        <Route path="/todos" element={<TodoPage />} />
+        <Route path="/todos/:id" element={<TodoIdPage />} />
+        <Route path="/users/:id" element={<UserIdPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
