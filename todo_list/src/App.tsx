@@ -1,7 +1,7 @@
 // import UserList from "./Components/UserList/userList";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Navbar from "./Components/Navbar/navbar";
+import Navbar from "./Components/UI/Navbar/navbar";
 import TodosPage from "./Components/pages/Todo/TodosPage/todosPage";
 import UserItemPage from "./Components/pages/User/UserItemPage/userItemPage";
 import UserPage from "./Components/pages/User/UserPage/userPage";

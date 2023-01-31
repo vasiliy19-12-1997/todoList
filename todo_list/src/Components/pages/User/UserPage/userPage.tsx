@@ -2,7 +2,7 @@ import axios from "axios";
 import { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import List from "../../../List/list";
-import { IUser } from "../../../types/types";
+import { IUser } from "../../../../types/types";
 import UserItem from "../UserItem/userItem";
 
 const UserPage: FC = () => {

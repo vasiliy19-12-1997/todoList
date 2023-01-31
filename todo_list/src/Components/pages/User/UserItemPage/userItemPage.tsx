@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FC, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import { IUser } from "../../../types/types";
+import { IUser } from "../../../../types/types";
 
 type UserItemPageParams = {
   id: string;

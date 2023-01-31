@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FC, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import { ITodo } from "../../../types/types";
+import { ITodo } from "../../../../types/types";
 
 type TodoItemPageParams = {
   id: string;
