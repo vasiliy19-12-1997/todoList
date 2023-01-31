@@ -1,13 +1,14 @@
+import { strict } from "assert";
 import { useState } from "react";
-interface useFetchingProps {}
+
 export const useFetching = (callback: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState("");
-  const fetching = async (...args: any) => {
+  const fetching = async (...args: string[]) => {
     try {
       setIsLoading(true);
-      await callback(...args);
-    } catch (error) {
+      await callback();
+    } catch (error: any) {
       setError(error.message);
     } finally {
       setIsLoading(false);
