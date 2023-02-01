@@ -1,21 +1,18 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { ITodo } from "../../../../types/types";
 
-interface TodoItemProps<T> {
+interface TodoItemProps {
   todo: ITodo;
-  onClick: (todo: ITodo) => void;
-  items:T[]
-
+  deleteTodo: (todo: ITodo) => void;
 }
 
-const TodoItem: FC<T> = ({ todo, onClick }:TodoItemProps<T>) => {
+export default function TodoItem(props: TodoItemProps) {
+  const { todo, deleteTodo } = props;
   return (
-    <div onClick={() => onClick(todo)}>
-      <button onClick={()=>}></button>
-      <input type="checkbox" checked={todo.completed}></input>
-      {todo.id}. {todo.title}
+    <div>
+      <button onClick={() => deleteTodo(todo)}>Delete</button>
+      <input type="checkbox" checked={props.todo.completed}></input>
+      {props.todo.id}. {props.todo.title}
     </div>
   );
-};
-
-export default TodoItem;
+}

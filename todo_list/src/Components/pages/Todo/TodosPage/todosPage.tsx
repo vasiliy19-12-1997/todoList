@@ -6,11 +6,27 @@ import { ITodo } from "../../../../types/types";
 import TodoItem from "../TodoItem/todoItem";
 
 const TodosPage: FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([
+    { title: "", id: Math.random(), completed: false },
+  ]);
+  const [value, setValue] = useState("");
+
   const navigate = useNavigate();
   const deleteTodo = (todo: ITodo) => {
     setTodos([...todos].filter((t) => t?.id !== todo?.id));
   };
+  const addTodo = () => {
+    const newTask = {
+      ...todos,
+      id: Math.random(),
+    };
+    setTodos([...todos, newTask]);
+  };
+  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  console.log(value);
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -31,16 +47,13 @@ const TodosPage: FC = () => {
   };
   return (
     <div>
+      <input type="text" value={value} onChange={changeInput} />
       <button onClick={() => navigate(`/users`)}>Users</button>
+      <button onClick={addTodo} />
       <List
         items={todos}
         renderItem={(todo: ITodo) => (
-          <TodoItem
-            items={todos}
-            onClick={(todo) => navigate("/todos/" + todo.id)}
-            key={todo.id}
-            todo={todo}
-          />
+          <TodoItem deleteTodo={deleteTodo} key={todo.id} todo={todo} />
         )}
       />
     </div>

@@ -11,6 +11,6 @@ export interface IUser {
 }
 export interface ITodo {
   id: number;
-  title: string;
-  completed: boolean;
+  title?: string;
+  completed?: boolean;
 }
