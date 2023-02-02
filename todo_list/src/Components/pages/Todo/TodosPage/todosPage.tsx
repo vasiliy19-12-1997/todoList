@@ -5,35 +5,26 @@ import List from "../../../List/list";
 import { ITodo } from "../../../../types/types";
 import TodoItem from "../TodoItem/todoItem";
 import TodoForm from "../TodoForm/todoForm";
+import ServiceTodo from "../../../API/serviceTodo";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
-
   const navigate = useNavigate();
+
   const deleteTodo = (todo: ITodo) => {
     setTodos([...todos].filter((t) => t?.id !== todo?.id));
   };
   const createTodo = (newTask: ITodo) => {
     setTodos([...todos, newTask]);
   };
+
   useEffect(() => {
     fetchTodos();
   }, []);
 
-  const fetchTodos = async (limit = 10) => {
-    try {
-      const response = await axios.get<ITodo[]>(
-        "https://jsonplaceholder.typicode.com/todos",
-        {
-          params: {
-            _limit: limit,
-          },
-        }
-      );
-      setTodos(response.data);
-    } catch (error) {
-      alert(error);
-    }
+  const fetchTodos = async () => {
+    const todos = await ServiceTodo.getAll();
+    setTodos(todos);
   };
   return (
     <div>
