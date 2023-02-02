@@ -4,32 +4,22 @@ import { useNavigate } from "react-router";
 import List from "../../../List/list";
 import { ITodo } from "../../../../types/types";
 import TodoItem from "../TodoItem/todoItem";
+import TodoForm from "../TodoForm/todoForm";
 
 const TodosPage: FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([
-    { title: "", id: Math.random(), completed: false },
-  ]);
-  const [value, setValue] = useState("");
+  const [todos, setTodos] = useState<ITodo[]>([]);
 
   const navigate = useNavigate();
   const deleteTodo = (todo: ITodo) => {
     setTodos([...todos].filter((t) => t?.id !== todo?.id));
   };
-  const addTodo = () => {
-    const newTask = {
-      ...todos,
-      id: Math.random(),
-    };
+  const createTodo = (newTask: ITodo) => {
     setTodos([...todos, newTask]);
   };
-  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-  console.log(value);
-
   useEffect(() => {
     fetchTodos();
   }, []);
+
   const fetchTodos = async (limit = 10) => {
     try {
       const response = await axios.get<ITodo[]>(
@@ -47,9 +37,8 @@ const TodosPage: FC = () => {
   };
   return (
     <div>
-      <input type="text" value={value} onChange={changeInput} />
       <button onClick={() => navigate(`/users`)}>Users</button>
-      <button onClick={addTodo} />
+      <TodoForm create={createTodo} />
       <List
         items={todos}
         renderItem={(todo: ITodo) => (
