@@ -1,6 +1,4 @@
 import axios from "axios";
-import { ITodo } from "../../types/types";
-
 export default class ServiceTodo {
   static async getAll(limit = 10, page = 1) {
     if (typeof JSON) {
