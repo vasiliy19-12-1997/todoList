@@ -5,10 +5,15 @@ import List from "../../../List/list";
 import { ITodo } from "../../../../types/types";
 import TodoItem from "../TodoItem/todoItem";
 import TodoForm from "../TodoForm/todoForm";
+import { useFetching } from "./../../../Hooks/useFetching";
+import ServiceTodo from "../../../API/serviceTodo";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
-
+  const [fetching, isLoading, error] = useFetching(async () => {
+    const response = await ServiceTodo.getAll();
+    setTodos(response);
+  });
   const navigate = useNavigate();
 
   const deleteTodo = (todo: ITodo) => {
@@ -22,21 +27,6 @@ const TodosPage: FC = () => {
     fetching();
   }, []);
 
-  const fetchTodos = async (limit = 10) => {
-    try {
-      const response = await axios.get<ITodo[]>(
-        "https://jsonplaceholder.typicode.com/todos",
-        {
-          params: {
-            _limit: limit,
-          },
-        }
-      );
-      setTodos(response.data);
-    } catch (error) {
-      alert(error);
-    }
-  };
   return (
     <div>
       <button onClick={() => navigate(`/users`)}>Users</button>

@@ -1,4 +1,3 @@
-import { strict } from "assert";
 import { useState } from "react";
 
 export const useFetching = (callback: () => void) => {
