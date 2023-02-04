@@ -1,4 +1,3 @@
-import { FC, useState } from "react";
 import { ITodo } from "../../../../types/types";
 
 interface TodoItemProps {
@@ -8,10 +7,15 @@ interface TodoItemProps {
 
 export default function TodoItem(props: TodoItemProps) {
   const { todo, deleteTodo } = props;
+  const ChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {};
   return (
     <div>
       <button onClick={() => deleteTodo(todo)}>Delete</button>
-      <input type="checkbox" checked={props.todo.completed}></input>
+      <input
+        onChange={ChangeCheckBox}
+        type="checkbox"
+        checked={props.todo.completed}
+      ></input>
       {props.todo.id}. {props.todo.title}
     </div>
   );

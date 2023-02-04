@@ -2,17 +2,17 @@ import { strict } from "assert";
 import { useState } from "react";
 
 export const useFetching = (callback: () => void) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState("");
-  const fetching = async (...args: string[]) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const fetching = async (...args: []) => {
     try {
       setIsLoading(true);
-      await callback();
+      await callback(...args);
     } catch (error: any) {
       setError(error.message);
     } finally {
       setIsLoading(false);
     }
   };
-  return [fetching, isLoading, error];
+  return [fetching, isLoading, error] as const;
 };

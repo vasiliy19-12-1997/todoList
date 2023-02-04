@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { ITodo } from "../../../../types/types";
 
 interface TodoFormProps {
-  create: () => void;
+  create: (todo: ITodo) => void;
 }
 const TodoForm: FC<TodoFormProps> = ({ create }) => {
   const [todo, setTodo] = useState({
