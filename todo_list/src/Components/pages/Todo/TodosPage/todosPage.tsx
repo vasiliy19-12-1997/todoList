@@ -7,9 +7,12 @@ import TodoItem from "../TodoItem/todoItem";
 import TodoForm from "../TodoForm/todoForm";
 import { useFetching } from "./../../../Hooks/useFetching";
 import ServiceTodo from "../../../API/serviceTodo";
+import MySelect from "../../../UI/Navbar/MySelect/mySelect";
+import MyButton from "../../../UI/MyButton/myButton";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
+  const [filter, setFilter] = useState({ sort: "", query: "" });
   const [fetching, isLoading, error] = useFetching(async () => {
     const response = await ServiceTodo.getAll();
     setTodos(response);
@@ -29,8 +32,10 @@ const TodosPage: FC = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(`/users`)}>Users</button>
+      <MyButton onClick={() => navigate(`/users`)}>Users</MyButton>
+      <MyButton>fdf</MyButton>
       <TodoForm create={createTodo} />
+      <MySelect />
       <List
         items={todos}
         renderItem={(todo: ITodo) => (
