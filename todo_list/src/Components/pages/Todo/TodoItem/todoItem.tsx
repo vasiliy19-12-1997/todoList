@@ -3,10 +3,11 @@ import { ITodo } from "../../../../types/types";
 interface TodoItemProps {
   todo: ITodo;
   deleteTodo: (todo: ITodo) => void;
+  index: number;
 }
 
 export default function TodoItem(props: TodoItemProps) {
-  const { todo, deleteTodo } = props;
+  const { todo, deleteTodo, index } = props;
   const ChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {};
   return (
     <div>
@@ -14,9 +15,9 @@ export default function TodoItem(props: TodoItemProps) {
       <input
         onChange={ChangeCheckBox}
         type="checkbox"
-        checked={props.todo.completed}
+        checked={todo.completed}
       ></input>
-      {props.todo.id}. {props.todo.title}
+      {index}. {todo.title}
     </div>
   );
 }

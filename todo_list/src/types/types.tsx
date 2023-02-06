@@ -13,4 +13,7 @@ export interface ITodo {
   id: number;
   title: string;
   completed: boolean;
+  sort: string;
+  query: string;
 }
+export type TestFields = keyof ITodo;
