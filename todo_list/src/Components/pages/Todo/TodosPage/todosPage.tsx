@@ -7,9 +7,10 @@ import TodoItem from "../TodoItem/todoItem";
 import TodoForm from "../TodoForm/todoForm";
 import { useFetching } from "./../../../Hooks/useFetching";
 import ServiceTodo from "../../../API/serviceTodo";
-import MySelect from "../../../UI/Navbar/MySelect/mySelect";
+import MySelect from "../../../UI/MySelect/mySelect";
 import MyButton from "../../../UI/MyButton/myButton";
 import { ITodo, TestFields } from "../../../../types/types";
+import TodoFilter from "../TodoFilter/todoFilter";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -46,6 +47,7 @@ const TodosPage: FC = () => {
       <MyButton onClick={() => navigate(`/users`)}>Users</MyButton>
       <MyButton>fdf</MyButton>
       <TodoForm create={createTodo} />
+      <TodoFilter filter={filter} setFilter={setFilter} />
       <MySelect />
       <List
         items={todos}

@@ -1,6 +1,9 @@
 import React, { FC } from "react";
-
-const MySelect: FC = () => {
+interface MySelectProps {
+  options: {};
+  value:
+}
+const MySelect: FC<MySelectProps> = () => {
   return (
     <div>
       <select name="" id="">
