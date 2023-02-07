@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 interface MySelectProps {
   options: {};
-  value:
 }
 const MySelect: FC<MySelectProps> = () => {
   return (

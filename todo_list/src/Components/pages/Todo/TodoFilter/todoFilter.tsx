@@ -13,7 +13,6 @@ const TodoFilter: FC<TodoFilterProps> = ({ filter, setFilter }) => {
       <MyInput />
 
       <MySelect
-        value={filter.sort}
         options={[
           { value: "title", name: "on name" },
           { value: "completed", name: "on completed" },

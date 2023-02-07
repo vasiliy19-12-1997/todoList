@@ -14,7 +14,8 @@ import TodoFilter from "../TodoFilter/todoFilter";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
-  const [filter, setFilter] = useState({ sort: "", query: "" } as ITodo);
+  const [filter, setFilter] = useState<{ [key: string]: TestFields }>({});
+  // const [filter, setFilter] = useState({ sort: "", query: "" });
   const [fetching, isLoading, error] = useFetching(async () => {
     const response = await ServiceTodo.getAll();
     setTodos(response);
@@ -27,16 +28,15 @@ const TodosPage: FC = () => {
   const createTodo = (newTask: ITodo) => {
     setTodos([...todos, newTask]);
   };
-  const fieldNames: TestFields[] = [filter.sort];
-  console.log(fieldNames);
-  const sortedTodos = useMemo(() => {
-    if (filter.sort) {
-      return [...todos].sort((a, b) => {
-        return a[filter.sort].localeCompare(b[filter.sort]);
-      });
-    }
-    return todos;
-  }, []);
+
+  // const sortedTodos = useMemo(() => {
+  //   if (filter.sort) {
+  //     return [...todos].sort((a, b) => {
+  //       return a[filter.sort].localeCompare(b[filter.sort]);
+  //     });
+  //   }
+  //   return todos;
+  // }, []);
 
   useEffect(() => {
     fetching();
@@ -47,8 +47,8 @@ const TodosPage: FC = () => {
       <MyButton onClick={() => navigate(`/users`)}>Users</MyButton>
       <MyButton>fdf</MyButton>
       <TodoForm create={createTodo} />
-      <TodoFilter filter={filter} setFilter={setFilter} />
-      <MySelect />
+      {/* <TodoFilter filter={filter} setFilter={setFilter} /> */}
+
       <List
         items={todos}
         renderItem={(todo: ITodo, index) => (
