@@ -1,21 +1,23 @@
-import axios from "axios";
 import { FC, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import List from "../../../List/list";
 
-import TodoItem from "../TodoItem/todoItem";
-import TodoForm from "../TodoForm/todoForm";
-import { useFetching } from "./../../../Hooks/useFetching";
+import { ITodo } from "../../../../types/types";
 import ServiceTodo from "../../../API/serviceTodo";
-import MySelect from "../../../UI/MySelect/mySelect";
 import MyButton from "../../../UI/MyButton/myButton";
-import { ITodo, TestFields } from "../../../../types/types";
+import TodoForm from "../TodoForm/todoForm";
+import TodoItem from "../TodoItem/todoItem";
+import { useFetching } from "./../../../Hooks/useFetching";
 import TodoFilter from "../TodoFilter/todoFilter";
+import useSortedTodos from "../../../Hooks/useFilterTodos";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
-  const [filter, setFilter] = useState<{ [key: string]: TestFields }>({});
-  // const [filter, setFilter] = useState({ sort: "", query: "" });
+  const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
+    sort: "title",
+    query: "",
+  });
+  const sortedTodos = useSortedTodos(todos, filter.sort, filter.query);
   const [fetching, isLoading, error] = useFetching(async () => {
     const response = await ServiceTodo.getAll();
     setTodos(response);
@@ -29,15 +31,6 @@ const TodosPage: FC = () => {
     setTodos([...todos, newTask]);
   };
 
-  // const sortedTodos = useMemo(() => {
-  //   if (filter.sort) {
-  //     return [...todos].sort((a, b) => {
-  //       return a[filter.sort].localeCompare(b[filter.sort]);
-  //     });
-  //   }
-  //   return todos;
-  // }, []);
-
   useEffect(() => {
     fetching();
   }, []);
@@ -47,10 +40,10 @@ const TodosPage: FC = () => {
       <MyButton onClick={() => navigate(`/users`)}>Users</MyButton>
       <MyButton>fdf</MyButton>
       <TodoForm create={createTodo} />
-      {/* <TodoFilter filter={filter} setFilter={setFilter} /> */}
+      <TodoFilter filter={filter} setFilter={setFilter} />
 
       <List
-        items={todos}
+        items={sortedTodos}
         renderItem={(todo: ITodo, index) => (
           <TodoItem
             deleteTodo={deleteTodo}

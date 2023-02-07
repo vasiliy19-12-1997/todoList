@@ -14,4 +14,3 @@ export interface ITodo {
   title: string;
   completed: boolean;
 }
-export type TestFields = keyof ITodo;
