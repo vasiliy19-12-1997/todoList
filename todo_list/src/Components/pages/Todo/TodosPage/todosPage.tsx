@@ -1,21 +1,21 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import List from "../../../List/list";
 
 import { ITodo } from "../../../../types/types";
 import ServiceTodo from "../../../API/serviceTodo";
+import useSortedTodos from "../../../Hooks/useFilterTodos";
 import MyButton from "../../../UI/MyButton/myButton";
+import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 import { useFetching } from "./../../../Hooks/useFetching";
-import TodoFilter from "../TodoFilter/todoFilter";
-import useSortedTodos from "../../../Hooks/useFilterTodos";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
     sort: "title",
-    query: "",
+    query: "query",
   });
   const sortedTodos = useSortedTodos(todos, filter.sort, filter.query);
   const [fetching, isLoading, error] = useFetching(async () => {

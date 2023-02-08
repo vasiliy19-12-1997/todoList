@@ -9,7 +9,7 @@ interface TodoFilterProps {
 }
 const TodoFilter: FC<TodoFilterProps> = (props: TodoFilterProps) => {
   const { filter, setFilter } = props;
-  // console.log(filter.sort);
+  console.log(filter.sort);
 
   return (
     <div>

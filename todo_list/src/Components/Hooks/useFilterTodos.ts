@@ -1,9 +1,6 @@
-import Q from "q";
 import { useMemo } from "react";
 import { ITodo } from "../../types/types";
-interface useSortedTodosProps {
-  todos: ITodo;
-}
+
 export const useSortedTodos = (
   todos: ITodo[],
   sort: keyof ITodo,
@@ -27,7 +24,7 @@ export const useSortedTodos = (
       });
     }
     return todos;
-  }, []);
+  }, [sort, todos]);
   return sortedTodos;
 };
 export default useSortedTodos;
