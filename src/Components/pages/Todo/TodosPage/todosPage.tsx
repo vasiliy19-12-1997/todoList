@@ -19,7 +19,7 @@ const TodosPage: FC = () => {
   });
   const sortedTodos = useSortedTodos(todos, filter.sort, filter.query);
   const [fetching, isLoading, error] = useFetching(async () => {
-    const response = await ServiceTodo.getAll();
+    const response: Array<ITodo> = await ServiceTodo.getAll();
     setTodos(response);
   });
   const navigate = useNavigate();

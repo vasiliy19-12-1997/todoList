@@ -27,4 +27,5 @@ export const useSortedTodos = (
   }, [sort, todos]);
   return sortedTodos;
 };
+
 export default useSortedTodos;
