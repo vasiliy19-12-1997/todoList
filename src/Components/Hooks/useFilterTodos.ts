@@ -1,11 +1,7 @@
 import { useMemo } from "react";
 import { ITodo } from "../../types/types";
 
-export const useSortedTodos = (
-  todos: ITodo[],
-  sort: keyof ITodo,
-  query: string
-) => {
+export const useSortedTodos = (todos: ITodo[], sort: keyof ITodo) => {
   const sortedTodos = useMemo(() => {
     if (sort) {
       return todos.sort((a, b) => {
@@ -27,5 +23,16 @@ export const useSortedTodos = (
   }, [sort, todos]);
   return sortedTodos;
 };
+export const useFilterTodos = (
+  todos: ITodo[],
+  sort: keyof ITodo,
+  query: string
+) => {
+  const sortedTodos = useSortedTodos(todos, sort);
+  const sortedAndSearchTodos = useMemo(() => {
+    return sortedTodos.filter((todo) => todo.title.includes(query));
+  }, [sortedTodos, sort, query]);
+  return sortedAndSearchTodos;
+};
 
-export default useSortedTodos;
+export default useFilterTodos;

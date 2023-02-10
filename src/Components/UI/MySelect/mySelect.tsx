@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { ITodo } from "../../../types/types";
-interface MySelectProps {
+interface MySelectProps<T> {
   options: { value: string; name: string }[];
   value: string;
   onChange: (sort: any) => void;
 }
-const MySelect: FC<MySelectProps> = (props: MySelectProps) => {
+export default function MySelect<T>(props: MySelectProps<T>) {
   const { options, value, onChange } = props;
   return (
     <div>
@@ -19,6 +19,4 @@ const MySelect: FC<MySelectProps> = (props: MySelectProps) => {
       </select>
     </div>
   );
-};
-
-export default MySelect;
+}

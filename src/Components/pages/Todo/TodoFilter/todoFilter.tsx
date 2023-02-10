@@ -13,7 +13,12 @@ const TodoFilter: FC<TodoFilterProps> = (props: TodoFilterProps) => {
 
   return (
     <div>
-      <MyInput />
+      <MyInput
+        value={filter.query}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setFilter({ ...filter, query: e.target.value })
+        }
+      />
 
       <MySelect
         onChange={(selectedSort: any) =>
