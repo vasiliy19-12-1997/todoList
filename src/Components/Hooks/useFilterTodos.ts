@@ -14,7 +14,7 @@ export const useSortedTodos = (todos: ITodo[], sort: keyof ITodo) => {
           return sortFromA - sortFromB;
         }
         if (typeof sortFromA === "boolean" && typeof sortFromB === "boolean") {
-          return +sortFromB - +sortFromB;
+          return +sortFromB - +sortFromA;
         }
         throw new Error("Ошибка в сортировке");
       });

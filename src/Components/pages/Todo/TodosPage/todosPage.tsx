@@ -39,7 +39,7 @@ const TodosPage: FC = () => {
   return (
     <div>
       <MyButton onClick={() => navigate(`/users`)}>Users</MyButton>
-      <MyButton>fdf</MyButton>
+
       <TodoForm create={createTodo} />
       <TodoFilter filter={filter} setFilter={setFilter} />
       <Loader />
