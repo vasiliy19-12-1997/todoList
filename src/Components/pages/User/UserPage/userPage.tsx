@@ -24,7 +24,6 @@ const UserPage: FC = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(`/todos`)}>Todos</button>
       <List
         items={users}
         renderItem={(user: IUser) => (

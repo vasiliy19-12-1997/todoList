@@ -1,7 +1,8 @@
 import axios from "axios";
-import { FC, useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { FC, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { ITodo } from "../../../../types/types";
+import MyButton from "../../../UI/MyButton/myButton";
 
 type TodoItemPageParams = {
   id: string;
@@ -27,7 +28,7 @@ const TodoItemPage: FC = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(`/todos`)}>Back</button>
+      <MyButton onClick={() => navigate(`/todos`)}>Back</MyButton>
 
       <h1>Страница пользователя {todo?.id}</h1>
       <div>{todo?.title}</div>

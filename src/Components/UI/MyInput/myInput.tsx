@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-
+import "./myInput.scss";
 interface MyInputProps {
   value: string;
   onChange: (query: React.ChangeEvent<HTMLInputElement>) => void;
@@ -7,8 +7,8 @@ interface MyInputProps {
 
 const MyInput: FC<MyInputProps> = ({ ...props }) => {
   return (
-    <div>
-      <input {...props} />
+    <div className="Input">
+      <input className="InputI" {...props} />
     </div>
   );
 };

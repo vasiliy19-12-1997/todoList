@@ -2,6 +2,7 @@ import axios from "axios";
 import { FC, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { IUser } from "../../../../types/types";
+import MyButton from "../../../UI/MyButton/myButton";
 
 type UserItemPageParams = {
   id: string;
@@ -27,7 +28,7 @@ const UserItemPage: FC = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(`/users`)}>Back</button>
+      <MyButton onClick={() => navigate(`/users`)}>Back</MyButton>
       <h1>Страница пользователя {user?.name}</h1>
       <div>{user?.email}</div>
       <div>

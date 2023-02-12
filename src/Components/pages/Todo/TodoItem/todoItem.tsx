@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import MyInput from "./../../../UI/MyInput/myInput";
 import MyInputCheckBox from "./../../../UI/MyInput/myInputCheckBox";
 import { channel } from "diagnostics_channel";
+import MyButton from "../../../UI/MyButton/myButton";
 
 interface TodoItemProps {
   todo: ITodo;
@@ -17,7 +18,7 @@ export default function TodoItem(props: TodoItemProps) {
   const [edit, setEdit] = useState("");
 
   const check = useRef("");
-
+  let a = edit;
   const ChangeCheckBox = (e: React.FormEvent<HTMLInputElement>) => {
     if (isChecked) {
       setIsChecked((todo.completed = false));
@@ -38,13 +39,15 @@ export default function TodoItem(props: TodoItemProps) {
   };
   console.log(isEdit);
   const saveEdit = () => {
-    setEdit((todo.title = edit));
+    todo.title = edit;
+    a = todo.title;
+    setEdit((a = edit));
     setIsEdit(false);
   };
 
   return (
     <div>
-      <button onClick={() => deleteTodo(todo)}>Delete</button>
+      <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
       <input type="checkbox" onClick={ChangeCheckBox} />
       {/* <MyInputCheckBox
         ref={check}
@@ -54,13 +57,12 @@ export default function TodoItem(props: TodoItemProps) {
         checked={todo.completed}
       ></MyInputCheckBox> */}
       <button onClick={clickEdit}>edit</button>
-      {isEdit && <input value={edit} onChange={ChangeTitle} />}
+      {isEdit && <MyInput value={a} onChange={ChangeTitle} />}
       {isEdit && (
-        <button value={edit} onClick={saveEdit}>
+        <MyButton value={edit} onClick={saveEdit}>
           Save
-        </button>
+        </MyButton>
       )}
-      {isEdit}
       {!isEdit && todo.title}
     </div>
   );

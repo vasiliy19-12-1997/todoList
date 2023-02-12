@@ -1,11 +1,13 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-
+import "./navbar.scss";
 const Navbar: FC = () => {
   return (
-    <div>
-      <Link to={"/users"}></Link>
-      <Link to={"/todos"}></Link>
+    <div className="Navbar">
+      <Link className="NavbarLink" to={"/users"}>
+        Users
+      </Link>
+      <Link to={"/todos"}>Todos</Link>
     </div>
   );
 };
