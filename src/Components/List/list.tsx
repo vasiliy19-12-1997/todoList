@@ -1,4 +1,3 @@
-import React from "react";
 //мы пишем дженнерик T потому мы ожиданием массив элементов, но они могут быть любого типа
 interface ListProps<T> {
   items: T[];

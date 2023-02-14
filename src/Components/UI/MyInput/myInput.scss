@@ -1,9 +1,16 @@
+$width: 400px;
 .Input {
   display: grid;
-  grid-template-columns: 800px;
+  grid-template-columns: 1fr;
   justify-content: center;
-  // align-self: center;
+
   margin: 10px 0px 20px 0px;
+  @if $width {
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  }
+
   &I {
     border-radius: 8px;
     padding: 5px;

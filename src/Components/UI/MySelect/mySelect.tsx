@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { ITodo } from "../../../types/types";
 interface MySelectProps<T> {
   options: { value: string; name: string }[];

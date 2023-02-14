@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 interface MyInputCheckBoxProps {
   value: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
