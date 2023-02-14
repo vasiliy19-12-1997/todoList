@@ -1,5 +1,8 @@
 .Input {
   display: grid;
+  grid-template-columns: 800px;
+  justify-content: center;
+  // align-self: center;
   margin: 10px 0px 20px 0px;
   &I {
     border-radius: 8px;
