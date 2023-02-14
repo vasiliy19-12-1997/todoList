@@ -1,16 +1,15 @@
-$width: 400px;
 .Input {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
+  grid-template-columns: auto;
 
-  margin: 10px 0px 20px 0px;
-  @if $width {
-    @media (max-width: 800px) {
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    }
+  @media (max-width: 800px) {
+    // grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    // grid-template-columns: min-content(200px) max-content(800px) fit-content(
+    //     5px
+    //   );
+    grid-template-columns: 500px;
+    justify-content: center;
   }
-
   &I {
     border-radius: 8px;
     padding: 5px;
