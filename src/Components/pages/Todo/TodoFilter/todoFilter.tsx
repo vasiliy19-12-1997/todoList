@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { ITodo } from "../../../../types/types";
+import Header from "../../../UI/Header/header";
 import MyInput from "../../../UI/MyInput/myInput";
 import MySelect from "../../../UI/MySelect/mySelect";
 
@@ -13,6 +14,15 @@ const TodoFilter: FC<TodoFilterProps> = (props: TodoFilterProps) => {
 
   return (
     <div>
+      <h2
+        style={{
+          display: "grid",
+          justifyContent: "center",
+          color: "#60916798",
+        }}
+      >
+        Filter
+      </h2>
       <MyInput
         value={filter.query}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

@@ -1,5 +1,4 @@
-import { FC } from "react";
-import { ITodo } from "../../../types/types";
+import "./mySelect.scss";
 interface MySelectProps<T> {
   options: { value: string; name: string }[];
   value: string;
@@ -8,8 +7,12 @@ interface MySelectProps<T> {
 export default function MySelect<T>(props: MySelectProps<T>) {
   const { options, value, onChange } = props;
   return (
-    <div>
-      <select onChange={(e) => onChange(e.target.value)} value={value}>
+    <div className="MySelect">
+      <select
+        className="MySelectS"
+        onChange={(e) => onChange(e.target.value)}
+        value={value}
+      >
         <option disabled>Sort by</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>

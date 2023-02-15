@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren } from "react";
 import "./myButton.scss";
 interface MyButtonProps {
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   value?: string;
 }
+
 const MyButton: FC<PropsWithChildren<MyButtonProps>> = ({
   children,
   ...props

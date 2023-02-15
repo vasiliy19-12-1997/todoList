@@ -1,12 +1,11 @@
 import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import List from "../../../List/list";
 
 import { ITodo } from "../../../../types/types";
 import ServiceTodo from "../../../API/serviceTodo";
 import { useFilterTodos } from "../../../Hooks/useFilterTodos";
+import Header from "../../../UI/Header/header";
 import Loader from "../../../UI/Loader/loader";
-import MyButton from "../../../UI/MyButton/myButton";
 import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
@@ -23,7 +22,6 @@ const TodosPage: FC = () => {
     const response: Array<ITodo> = await ServiceTodo.getAll();
     setTodos(response);
   });
-  const navigate = useNavigate();
 
   const deleteTodo = (todo: ITodo) => {
     setTodos([...todos].filter((t) => t?.id !== todo?.id));
@@ -38,6 +36,7 @@ const TodosPage: FC = () => {
 
   return (
     <div>
+      <Header>Todo App</Header>
       <TodoForm create={createTodo} />
       <TodoFilter filter={filter} setFilter={setFilter} />
       <Loader />

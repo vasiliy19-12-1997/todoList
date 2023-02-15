@@ -1,10 +1,8 @@
-import { ITodo } from "../../../../types/types";
 import { useRef, useState } from "react";
-import MyInput from "./../../../UI/MyInput/myInput";
-import MyInputCheckBox from "./../../../UI/MyInput/myInputCheckBox";
-import { channel } from "diagnostics_channel";
+import { ITodo } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
-
+import MyInput from "./../../../UI/MyInput/myInput";
+import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;
   deleteTodo: (todo: ITodo) => void;
@@ -46,24 +44,19 @@ export default function TodoItem(props: TodoItemProps) {
   };
 
   return (
-    <div>
-      <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
+    <div className="TodoItem">
       <input type="checkbox" onClick={ChangeCheckBox} />
-      {/* <MyInputCheckBox
-        ref={check}
-        value={checked}
-        onChange={ChangeCheckBox}
-        onClick={ClickCheckBox}
-        checked={todo.completed}
-      ></MyInputCheckBox> */}
-      <button onClick={clickEdit}>edit</button>
+      <MyButton onClick={clickEdit}>edit</MyButton>
+      <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
+
       {isEdit && <MyInput value={a} onChange={ChangeTitle} />}
       {isEdit && (
         <MyButton value={edit} onClick={saveEdit}>
           Save
         </MyButton>
       )}
-      {!isEdit && todo.title}
+
+      <div className="TodoItemText">{!isEdit && todo.title}</div>
     </div>
   );
 }

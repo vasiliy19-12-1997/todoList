@@ -4,6 +4,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-size: 20px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -12,15 +14,27 @@ code {
 #root {
   display: grid;
   justify-content: center;
-  box-sizing: border-box;
   align-content: center;
-  grid-template-columns: 800px;
-  @media (max-width: 790px) {
+  grid-template-columns: 1400px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 1000px;
+    justify-content: center;
+    font-size: 18px;
+  }
+  @media (max-width: 1200px) {
+    grid-template-columns: 800px;
+    justify-content: center;
+    font-size: 16px;
+  }
+  @media (max-width: 810px) {
     grid-template-columns: 500px;
     justify-content: center;
+    font-size: 14px;
   }
   @media (max-width: 550px) {
     grid-template-columns: 300px;
     justify-content: center;
+    font-size: 12px;
   }
 }
