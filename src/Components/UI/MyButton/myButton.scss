@@ -1,7 +1,6 @@
 .Button {
   display: grid;
-  grid-template-columns: 800px;
-  justify-content: center;
+  grid-template-columns: auto;
   margin: 20px 0px 20px 0px;
   &S {
     color: #fff;

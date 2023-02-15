@@ -14,4 +14,13 @@ code {
   justify-content: center;
   box-sizing: border-box;
   align-content: center;
+  grid-template-columns: 800px;
+  @media (max-width: 790px) {
+    grid-template-columns: 500px;
+    justify-content: center;
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: 300px;
+    justify-content: center;
+  }
 }
