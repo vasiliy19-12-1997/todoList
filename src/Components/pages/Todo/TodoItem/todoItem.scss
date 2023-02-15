@@ -1,10 +1,14 @@
 .TodoItem {
   display: grid;
-  grid-template-columns: 20px 1fr 1fr;
-  grid-template-rows: 100px 20px 20px;
-
+  // grid-template-columns: 20px 1fr 1fr;
+  // grid-template-rows: 100px 20px 20px;
+  &But {
+    display: grid;
+    grid-template-columns: 30px 1fr 1fr;
+    gap: 10px;
+  }
   &Text {
     display: grid;
-    justify-self: start;
+    justify-self: center;
   }
 }

@@ -45,9 +45,11 @@ export default function TodoItem(props: TodoItemProps) {
 
   return (
     <div className="TodoItem">
-      <input type="checkbox" onClick={ChangeCheckBox} />
-      <MyButton onClick={clickEdit}>edit</MyButton>
-      <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
+      <div className="TodoItemBut">
+        <input type="checkbox" onClick={ChangeCheckBox} />
+        <MyButton onClick={clickEdit}>edit</MyButton>
+        <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
+      </div>
 
       {isEdit && <MyInput value={a} onChange={ChangeTitle} />}
       {isEdit && (
