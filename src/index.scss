@@ -17,7 +17,7 @@ code {
   align-content: center;
   grid-template-columns: 1400px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     grid-template-columns: 1000px;
     justify-content: center;
     font-size: 18px;
@@ -27,7 +27,7 @@ code {
     justify-content: center;
     font-size: 16px;
   }
-  @media (max-width: 810px) {
+  @media (max-width: 830px) {
     grid-template-columns: 500px;
     justify-content: center;
     font-size: 14px;

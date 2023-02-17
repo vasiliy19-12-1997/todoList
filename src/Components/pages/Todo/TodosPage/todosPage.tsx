@@ -5,7 +5,6 @@ import { ITodo } from "../../../../types/types";
 import ServiceTodo from "../../../API/serviceTodo";
 import { useFilterTodos } from "../../../Hooks/useFilterTodos";
 import Header from "../../../UI/Header/header";
-import Loader from "../../../UI/Loader/loader";
 import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
@@ -37,11 +36,18 @@ const TodosPage: FC = () => {
   return (
     <div>
       <Header>Todo App</Header>
-      <TodoForm create={createTodo} />
       <TodoFilter filter={filter} setFilter={setFilter} />
-      <Loader />
+      <TodoForm create={createTodo} />
+
       {isLoading ? (
-        <Loader />
+        <h2
+          style={{
+            display: "grid",
+            justifyContent: "center",
+          }}
+        >
+          Loading...
+        </h2>
       ) : (
         <List
           items={sortedAndSearchTodos}

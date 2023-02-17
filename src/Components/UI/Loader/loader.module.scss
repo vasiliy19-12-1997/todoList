@@ -1,6 +1,6 @@
 .Loader {
-  display: flex;
-  align-content: center;
+  display: grid;
+  justify-self: center;
   &Header {
     font-size: 20px;
   }

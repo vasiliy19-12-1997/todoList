@@ -1,10 +1,24 @@
+.Todo {
+  border: 2px solid teal;
+  margin: 10px;
+}
 .TodoItem {
   display: grid;
-  grid-template-columns: 20px 1fr 1fr;
-  grid-template-rows: 100px 20px 20px;
+  grid-template-columns: 30px 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20px;
 
-  &Text {
-    display: grid;
-    justify-self: start;
+  @media (max-width: 550px) {
+    grid-template-columns: 250px;
+    justify-content: center;
+    font-size: 12px;
   }
+}
+.TodoItemText {
+  display: grid;
+  justify-content: center;
+}
+.TodoItemEdit {
+  margin-top: 20px;
 }
