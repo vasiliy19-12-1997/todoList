@@ -1,4 +1,3 @@
-// import UserList from "./Components/UserList/userList";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Navbar from "./Components/UI/Navbar/navbar";

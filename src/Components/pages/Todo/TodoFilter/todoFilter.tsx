@@ -14,16 +14,8 @@ const TodoFilter: FC<TodoFilterProps> = (props: TodoFilterProps) => {
 
   return (
     <div>
-      <h2
-        style={{
-          display: "grid",
-          justifyContent: "center",
-          color: "#60916798",
-        }}
-      >
-        Filter
-      </h2>
       <MyInput
+        placeholder="Поиск по сайту"
         value={filter.query}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setFilter({ ...filter, query: e.target.value })

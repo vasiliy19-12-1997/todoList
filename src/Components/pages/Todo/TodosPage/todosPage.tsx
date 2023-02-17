@@ -9,6 +9,7 @@ import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 import { useFetching } from "./../../../Hooks/useFetching";
+import Loader from "./../../../UI/Loader/loader";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -18,7 +19,7 @@ const TodosPage: FC = () => {
   });
   const sortedAndSearchTodos = useFilterTodos(todos, filter.sort, filter.query);
   const [fetching, isLoading, error] = useFetching(async () => {
-    const response: Array<ITodo> = await ServiceTodo.getAll();
+    const response: ITodo[] = await ServiceTodo.getTodos();
     setTodos(response);
   });
 
@@ -40,14 +41,7 @@ const TodosPage: FC = () => {
       <TodoForm create={createTodo} />
 
       {isLoading ? (
-        <h2
-          style={{
-            display: "grid",
-            justifyContent: "center",
-          }}
-        >
-          Loading...
-        </h2>
+        <Loader>Loading...</Loader>
       ) : (
         <List
           items={sortedAndSearchTodos}

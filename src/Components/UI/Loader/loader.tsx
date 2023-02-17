@@ -1,9 +1,9 @@
-import { FC } from "react";
-// import "./loader.module.scss";
-const Loader: FC = () => {
+import { FC, PropsWithChildren } from "react";
+import "./loader.scss";
+const Loader: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div>
-      <h2>Loading</h2>
+    <div className="Loader">
+      <h2 className="LoaderH">{children}</h2>
     </div>
   );
 };

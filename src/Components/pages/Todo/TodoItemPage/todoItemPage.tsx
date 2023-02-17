@@ -1,9 +1,10 @@
-import axios from "axios";
 import { FC, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 import { ITodo } from "../../../../types/types";
+import ServiceTodo from "../../../API/serviceTodo";
+import { useFetching } from "../../../Hooks/useFetching";
 import MyButton from "../../../UI/MyButton/myButton";
-
 type TodoItemPageParams = {
   id: string;
 };
@@ -11,20 +12,13 @@ const TodoItemPage: FC = () => {
   const [todo, setTodo] = useState<ITodo | null>(null);
   const params = useParams<TodoItemPageParams>();
   const navigate = useNavigate();
+  const [fetching, isLoading, error] = useFetching(async () => {
+    const response: ITodo = await ServiceTodo.getTodosId(params.id);
+    setTodo(response);
+  });
   useEffect(() => {
-    fetchTodos();
+    fetching();
   }, []);
-
-  const fetchTodos = async () => {
-    try {
-      const response = await axios.get<ITodo>(
-        "https://jsonplaceholder.typicode.com/todos/" + params.id
-      );
-      setTodo(response.data);
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   return (
     <div>
