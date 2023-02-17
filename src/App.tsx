@@ -13,10 +13,10 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/users" element={<UserPage />}></Route>
-        <Route path="/todos" element={<TodosPage />}></Route>
+        <Route path="/todoList" element={<TodosPage />}></Route>
         <Route path="/users/:id" element={<UserItemPage />}></Route>
-        <Route path="/todos/:id" element={<TodoItemPage />}></Route>
-        <Route path="/*" element={<Navigate to="/todos" replace />} />
+        <Route path="/todoList/:id" element={<TodoItemPage />}></Route>
+        <Route path="/*" element={<Navigate to="/todoList" replace />} />
       </Routes>
     </BrowserRouter>
   );
