@@ -21,7 +21,7 @@ const Navbar = () => {
           Todos
         </Link>
       </div>
-      <MyButton onClick={logOut}>LogOut</MyButton>
+      {isAuth && <MyButton onClick={logOut}>LogOut</MyButton>}
     </div>
   );
 };
