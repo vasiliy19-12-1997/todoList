@@ -1,9 +1,7 @@
-<<<<<<<< HEAD:todo_list/src/Components/EventsExample/eventsExample.tsx
-import React, { FC, ReactNode, useRef, useState } from "react";
-========
+
 import { FC, useRef, useState } from "react";
 import MyButton from "../UI/MyButton/myButton";
->>>>>>>> develop:src/Components/Events/eventsExample.tsx
+
 
 const EventsExample: FC = () => {
   const [value, setValue] = useState<string>("");
