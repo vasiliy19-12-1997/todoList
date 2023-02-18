@@ -6,7 +6,7 @@ import ServiceTodo from "../../../API/serviceTodo";
 import { useFetching } from "../../../Hooks/useFetching";
 import MyButton from "../../../UI/MyButton/myButton";
 type TodoItemPageParams = {
-  id: string;
+  id: any;
 };
 const TodoItemPage: FC = () => {
   const [todo, setTodo] = useState<ITodo | null>(null);

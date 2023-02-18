@@ -10,6 +10,7 @@ import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 import { useFetching } from "./../../../Hooks/useFetching";
 import Loader from "./../../../UI/Loader/loader";
+import Login from "../Login/login";
 
 const TodosPage: FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -28,16 +29,18 @@ const TodosPage: FC = () => {
   };
   const createTodo = (newTask: ITodo) => {
     setTodos([...todos, newTask]);
+    localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   useEffect(() => {
-    fetching();
+    localStorage.getItem("todos");
   }, []);
 
   return (
     <div>
-      <Header>Todo App</Header>
       <TodoFilter filter={filter} setFilter={setFilter} />
+      <Header>Todo App</Header>
+
       <TodoForm create={createTodo} />
 
       {isLoading ? (

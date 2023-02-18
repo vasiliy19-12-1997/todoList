@@ -5,19 +5,29 @@ import TodosPage from "./Components/pages/Todo/TodosPage/todosPage";
 import UserItemPage from "./Components/pages/User/UserItemPage/userItemPage";
 import UserPage from "./Components/pages/User/UserPage/userPage";
 import TodoItemPage from "./Components/pages/Todo/TodoItemPage/todoItemPage";
+import { AuthContext } from "./Context/context";
+import { useEffect, useState } from "react";
+import { Auth } from "./types/types";
+import AppRouter from "./Components/AppRouter/appRouter";
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setIsAuth(true);
+    }
+    setIsLoading(false);
+  }, []);
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/users" element={<UserPage />}></Route>
-        <Route path="/todoList" element={<TodosPage />}></Route>
-        <Route path="/users/:id" element={<UserItemPage />}></Route>
-        <Route path="/todoList/:id" element={<TodoItemPage />}></Route>
-        <Route path="/*" element={<Navigate to="/todoList" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthContext.Provider
+      value={{ isAuth, setIsAuth, setIsLoading, isLoading }}
+    >
+      <BrowserRouter>
+        <Navbar />
+        <AppRouter />
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 };
 

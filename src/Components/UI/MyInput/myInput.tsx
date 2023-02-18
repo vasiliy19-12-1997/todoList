@@ -1,8 +1,8 @@
 import { FC } from "react";
 import "./myInput.scss";
 interface MyInputProps {
-  value: string;
-  onChange: (query: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (query: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 

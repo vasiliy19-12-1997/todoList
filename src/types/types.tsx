@@ -14,3 +14,9 @@ export interface ITodo {
   title: string;
   completed: boolean;
 }
+export interface Auth {
+  isAuth: boolean;
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
