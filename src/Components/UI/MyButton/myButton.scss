@@ -1,0 +1,16 @@
+.Button {
+  display: grid;
+  grid-template-columns: auto;
+
+  margin: 10px;
+  &S {
+    color: #fff;
+    background: #648a6a98;
+    border: 2px solid #ffa218;
+    cursor: pointer;
+    min-width: 200px;
+    height: 30px;
+    border-radius: 8px;
+    font: 16px bold;
+  }
+}

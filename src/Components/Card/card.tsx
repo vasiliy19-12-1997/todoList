@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useState } from "react";
 
 export enum CardVariant {
   outlined = "outlined",
