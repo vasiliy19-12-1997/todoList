@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useContext } from "react";
+import { FC, useEffect, useState } from "react";
 import List from "../../../List/list";
 
 import { ITodo } from "../../../../types/types";
@@ -10,8 +10,6 @@ import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 import { useFetching } from "./../../../Hooks/useFetching";
 import Loader from "./../../../UI/Loader/loader";
-import Login from "../Login/login";
-import { AuthContext } from "../../../../Context/context";
 
 const TodosPage: FC = () => {
   //locale storage
@@ -23,18 +21,20 @@ const TodosPage: FC = () => {
       return sortedAndSearchTodos;
     }
   };
+  //main store
   const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos());
   const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
     sort: "title",
     query: "",
   });
-
+  //фильтр + сортировка
   const sortedAndSearchTodos = useFilterTodos(todos, filter.sort, filter.query);
+  //использую поля из массива хука для загрузки данных с сервера
   const [fetching, isLoading, error] = useFetching(async () => {
     const response: ITodo[] = await ServiceTodo.getTodos();
     setTodos(response);
   });
-
+  // функции принимают пропсы из дочернего компонента
   const deleteTodo = (todo: ITodo) => {
     setTodos([...todos].filter((t) => t?.id !== todo?.id));
   };

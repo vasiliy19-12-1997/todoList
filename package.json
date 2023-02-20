@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.2.6",
+    "mobx": "^6.8.0",
     "module": "^1.2.5",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",

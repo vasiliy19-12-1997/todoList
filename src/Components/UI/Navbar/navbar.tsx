@@ -7,7 +7,7 @@ import MyButton from "../MyButton/myButton";
 import Login from "../../pages/Todo/Login/login";
 const Navbar = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as Auth;
-  const logOut = () => {
+  const LogOut = () => {
     setIsAuth(false);
     localStorage.removeItem("auth");
   };
@@ -21,7 +21,7 @@ const Navbar = () => {
           Todos
         </Link>
       </div>
-      {isAuth && <MyButton onClick={logOut}>LogOut</MyButton>}
+      {isAuth && <MyButton onClick={LogOut}>Log Out</MyButton>}
     </div>
   );
 };
