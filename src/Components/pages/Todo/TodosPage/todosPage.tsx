@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useContext } from "react";
 import List from "../../../List/list";
 
 import { ITodo } from "../../../../types/types";
@@ -11,13 +11,24 @@ import TodoItem from "../TodoItem/todoItem";
 import { useFetching } from "./../../../Hooks/useFetching";
 import Loader from "./../../../UI/Loader/loader";
 import Login from "../Login/login";
+import { AuthContext } from "../../../../Context/context";
 
 const TodosPage: FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  //locale storage
+  const stored = localStorage.getItem("todos");
+  const getLocaleTodos = () => {
+    if (stored) {
+      return JSON.parse(stored);
+    } else {
+      return sortedAndSearchTodos;
+    }
+  };
+  const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos());
   const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
     sort: "title",
     query: "",
   });
+
   const sortedAndSearchTodos = useFilterTodos(todos, filter.sort, filter.query);
   const [fetching, isLoading, error] = useFetching(async () => {
     const response: ITodo[] = await ServiceTodo.getTodos();
@@ -29,12 +40,11 @@ const TodosPage: FC = () => {
   };
   const createTodo = (newTask: ITodo) => {
     setTodos([...todos, newTask]);
-    localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   useEffect(() => {
-    localStorage.getItem("todos");
-  }, []);
+    localStorage.setItem("todos", JSON.stringify(sortedAndSearchTodos));
+  }, [sortedAndSearchTodos]);
 
   return (
     <div>

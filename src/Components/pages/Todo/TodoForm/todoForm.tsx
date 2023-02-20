@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ITodo } from "../../../../types/types";
 import "./todoForm.scss";
 import MyInput from "./../../../UI/MyInput/myInput";
@@ -17,6 +17,7 @@ const TodoForm: FC<TodoFormProps> = ({ create }) => {
       id: Math.random(),
     };
     create(newTask);
+    // localStorage.setItem("todos", JSON.stringify(newTask));
   };
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo({ ...todo, title: e.target.value });
