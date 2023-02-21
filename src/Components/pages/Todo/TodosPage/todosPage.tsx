@@ -17,13 +17,17 @@ const TodosPage: FC = () => {
   const getLocaleTodos = () => {
     if (stored) {
       return JSON.parse(stored);
+    }
+    if (!stored) {
+      return [];
     } else {
       return sortedAndSearchTodos;
     }
   };
   //main store
   // const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos() || []);
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos());
+  const [isLocale, setIsLocale] = useState(false);
   const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
     sort: "title",
     query: "",
