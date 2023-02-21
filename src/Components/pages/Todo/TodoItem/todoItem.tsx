@@ -1,15 +1,17 @@
+import { observer } from "mobx-react-lite";
 import { useRef, useState } from "react";
+import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;
-  deleteTodo: (todo: ITodo) => void;
+  deleteTodo?: (todo: ITodo) => void;
   index: number;
 }
 
-export default function TodoItem(props: TodoItemProps) {
+function TodoItem(props: TodoItemProps) {
   const { todo, deleteTodo, index } = props;
   const [isChecked, setIsChecked] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -51,7 +53,7 @@ export default function TodoItem(props: TodoItemProps) {
       <div className="TodoItem">
         <input type="checkbox" onClick={ChangeCheckBox} />
         <MyButton onClick={clickEdit}>edit</MyButton>
-        <MyButton onClick={() => deleteTodo(todo)}>Delete</MyButton>
+        <MyButton onClick={() => store.deleteTodo(todo.id)}>Delete</MyButton>
       </div>
       <div className="TodoItemEdit">
         {" "}
@@ -65,3 +67,4 @@ export default function TodoItem(props: TodoItemProps) {
     </div>
   );
 }
+export default observer(TodoItem);
