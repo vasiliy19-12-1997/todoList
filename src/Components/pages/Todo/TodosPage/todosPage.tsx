@@ -52,7 +52,7 @@ const TodosPage: FC = () => {
   }, [sortedAndSearchTodos]);
 
   return (
-    <div>
+    <>
       <TodoFilter filter={filter} setFilter={setFilter} />
       <Header>Todo App</Header>
 
@@ -73,7 +73,7 @@ const TodosPage: FC = () => {
           )}
         />
       )}
-    </div>
+    </>
   );
 };
 
