@@ -22,7 +22,8 @@ const TodosPage: FC = () => {
     }
   };
   //main store
-  const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos());
+  // const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos() || []);
+  const [todos, setTodos] = useState<ITodo[]>([]);
   const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
     sort: "title",
     query: "",
