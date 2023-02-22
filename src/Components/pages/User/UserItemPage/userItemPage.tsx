@@ -27,14 +27,14 @@ const UserItemPage: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <MyButton onClick={() => navigate(`/users`)}>Back</MyButton>
       <h1>Страница пользователя {user?.name}</h1>
       <div>{user?.email}</div>
       <div>
         {user?.address.city} {user?.address.street} {user?.address.zipcode}
       </div>
-    </div>
+    </>
   );
 };
 

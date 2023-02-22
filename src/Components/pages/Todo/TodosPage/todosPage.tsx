@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import List from "../../../List/list";
-
+import "mobx-react-lite/batchingForReactDom";
 import { observer } from "mobx-react-lite";
 import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
@@ -43,20 +43,17 @@ const TodosPage: FC = () => {
   //   localStorage.setItem("todos", JSON.stringify(store.todos));
   // }, [store.todos]);
 
-  const ItemObserver = observer(TodoItem);
-  const TodoFormObserver = observer(TodoForm);
-
   return (
     <>
       <TodoFilter filter={filter} setFilter={setFilter} />
       <Header>Todo App</Header>
 
-      <TodoFormObserver />
+      <TodoForm />
 
       <List
         items={store.todos}
         renderItem={(todo: ITodo, index) => (
-          <ItemObserver key={todo.id} todo={todo} index={index + 1} />
+          <TodoItem key={todo.id} todo={todo} index={index + 1} />
         )}
       />
     </>

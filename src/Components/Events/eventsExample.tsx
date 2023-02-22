@@ -29,7 +29,7 @@ const EventsExample: FC = () => {
     setIsDrag(true);
   };
   return (
-    <div>
+    <>
       <input value={value} onChange={changeHandler} placeholder="управляемый" />
       <input ref={inputRef} placeholder="неуправляемый" />
       <button onClick={clickHandler}>BUTTon</button>
@@ -53,7 +53,7 @@ const EventsExample: FC = () => {
           marginTop: "15px",
         }}
       ></div>
-    </div>
+    </>
   );
 };
 

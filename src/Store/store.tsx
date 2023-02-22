@@ -1,10 +1,4 @@
-import {
-  action,
-  computed,
-  makeAutoObservable,
-  makeObservable,
-  observable,
-} from "mobx";
+import { makeAutoObservable } from "mobx";
 import { ITodo } from "./../types/types";
 
 const createTodo = (todos: ITodo[], title: string) => [
@@ -24,17 +18,13 @@ class Store {
   newTodo: string = "";
 
   constructor() {
-    makeObservable(this, {
-      todos: observable,
-      newTodo: computed,
-      createTodo: action,
-      deleteTodo: action,
-    });
+    makeAutoObservable(this);
   }
 
   createTodo() {
     this.todos = createTodo(this.todos, this.newTodo);
     this.newTodo = "";
+    console.log("create todo", this.todos);
   }
   deleteTodo(id: number) {
     this.todos = deleteTodo(this.todos, id);

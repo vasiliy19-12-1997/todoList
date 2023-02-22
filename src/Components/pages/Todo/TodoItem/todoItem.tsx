@@ -4,6 +4,7 @@ import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
+import "mobx-react-lite/batchingForReactDom";
 import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;

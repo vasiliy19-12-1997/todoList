@@ -12,7 +12,7 @@ const Navbar = () => {
     localStorage.removeItem("auth");
   };
   return (
-    <div>
+    <>
       <div className="Navbar">
         <Link className="NavbarLink" to={"/users"}>
           Users
@@ -22,7 +22,7 @@ const Navbar = () => {
         </Link>
       </div>
       {isAuth && <MyButton onClick={LogOut}>Log Out</MyButton>}
-    </div>
+    </>
   );
 };
 

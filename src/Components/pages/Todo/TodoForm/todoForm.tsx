@@ -5,6 +5,7 @@ import { ITodo } from "../../../../types/types";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoForm.scss";
+import "mobx-react-lite/batchingForReactDom";
 interface TodoFormProps {
   create?: (todo: ITodo) => void;
 }

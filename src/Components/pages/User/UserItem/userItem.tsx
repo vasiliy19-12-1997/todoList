@@ -8,7 +8,7 @@ interface UserItemProps {
 
 const UserItem: FC<UserItemProps> = ({ user, onClick }) => {
   return (
-    <div>
+    <>
       <div
         onClick={() => onClick(user)}
         style={{ padding: "15px", border: "1px solid teal" }}
@@ -16,7 +16,7 @@ const UserItem: FC<UserItemProps> = ({ user, onClick }) => {
         {user.id}. {user.name} проживает в городе {user.address.city} на улице{" "}
         {user.address.street}
       </div>
-    </div>
+    </>
   );
 };
 
