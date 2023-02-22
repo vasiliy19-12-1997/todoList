@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import List from "../../../List/list";
 
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import Header from "../../../UI/Header/header";
