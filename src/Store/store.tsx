@@ -1,13 +1,9 @@
-import { makeAutoObservable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import { ITodo } from "./../types/types";
 
 const createTodo = (todos: ITodo[], title: string) => [
-  {
-    ...todos,
-    id: Math.random(),
-    title,
-    completed: false,
-  },
+  ...todos,
+  { id: Math.random(), title, completed: true },
 ];
 const deleteTodo = (todos: ITodo[], id: number): ITodo[] => {
   return todos.filter((t) => t.id !== id);
@@ -15,19 +11,22 @@ const deleteTodo = (todos: ITodo[], id: number): ITodo[] => {
 
 class Store {
   todos: ITodo[] = [];
-  newTodo: string = "";
+  todo: string = "";
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      todos: observable,
+      createTodo: action,
+      deleteTodo: action,
+      todo: observable,
+    });
   }
 
   createTodo() {
-    this.todos = createTodo(this.todos, this.newTodo);
-    this.newTodo = "";
-    console.log("create todo", this.todos);
+    this.todos = createTodo(this.todos, this.todo);
   }
   deleteTodo(id: number) {
-    this.todos = deleteTodo(this.todos, id);
+    this.todos.filter((t) => t.id !== id);
   }
 }
 const store = new Store();

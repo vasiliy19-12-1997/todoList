@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
+import "mobx-react-lite/batchingForReactDom";
 import { useRef, useState } from "react";
 import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
-import "mobx-react-lite/batchingForReactDom";
 import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;
@@ -13,7 +13,7 @@ interface TodoItemProps {
 }
 
 function TodoItem(props: TodoItemProps) {
-  const { todo, deleteTodo, index } = props;
+  const { todo, index } = props;
   const [isChecked, setIsChecked] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState("");

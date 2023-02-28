@@ -1,11 +1,9 @@
-import { FC, useState } from "react";
-import List from "../../../List/list";
-import "mobx-react-lite/batchingForReactDom";
 import { observer } from "mobx-react-lite";
+import "mobx-react-lite/batchingForReactDom";
+import { FC } from "react";
 import store from "../../../../Store/store";
-import { ITodo } from "../../../../types/types";
+import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
-import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 
@@ -26,11 +24,11 @@ const TodosPage: FC = () => {
   // const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos() || []);
   // const [todos, setTodos] = useState<ITodo[]>(getLocaleTodos());
 
-  const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
-    sort: "title",
-    query: "",
-  });
-  //фильтр + сортировка
+  // const [filter, setFilter] = useState<{ sort: keyof ITodo; query: string }>({
+  //   sort: "title",
+  //   query: "",
+  // });
+  // фильтр + сортировка;
   // const sortedAndSearchTodos = useFilterTodos(todos, filter.sort, filter.query);
 
   //использую поля из массива хука для загрузки данных с сервера
@@ -42,17 +40,18 @@ const TodosPage: FC = () => {
   // useEffect(() => {
   //   localStorage.setItem("todos", JSON.stringify(store.todos));
   // }, [store.todos]);
-
+  const TodoListObserver = observer(List);
+  // const TodoItemObserver = observer(TodoItem);
   return (
     <>
-      <TodoFilter filter={filter} setFilter={setFilter} />
+      {/* <TodoFilter filter={filter} setFilter={setFilter} /> */}
       <Header>Todo App</Header>
 
       <TodoForm />
 
-      <List
+      <TodoListObserver
         items={store.todos}
-        renderItem={(todo: ITodo, index) => (
+        renderItem={(todo, index) => (
           <TodoItem key={todo.id} todo={todo} index={index + 1} />
         )}
       />
