@@ -1,10 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 import { ITodo } from "./../types/types";
 
-const deleteTodo = (todos: ITodo[], id: number): ITodo[] => {
-  return todos.filter((t) => t.id !== id);
-};
-
 class Store {
   todos: ITodo[] = [];
   todo: string = "";
@@ -19,10 +15,16 @@ class Store {
   }
 
   createTodo(title: string) {
-    this.todos.push({ id: Math.random(), title, completed: true });
+    return this.todos.push({
+      id: Math.max(0, Math.max(...this.todos.map(({ id }) => id))) + 1,
+      title,
+      completed: true,
+    });
   }
   deleteTodo(id: number) {
-    this.todos = deleteTodo(this.todos, id);
+    console.log(`todos:${this.todos}`);
+    console.log(`delete id :${id}`);
+    this.todos = this.todos.filter((todo) => todo.id !== id);
   }
 }
 const store = new Store();

@@ -8,8 +8,8 @@ import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;
-  deleteTodo?: (todo: ITodo) => void;
   index: number;
+  deleteTodo?: (id: number) => void;
 }
 
 function TodoItem(props: TodoItemProps) {
@@ -45,9 +45,7 @@ function TodoItem(props: TodoItemProps) {
     setEdit((a = edit));
     setIsEdit(false);
   };
-  const deleteTodo = (id: number) => {
-    store.deleteTodo(todo.id);
-  };
+
   return (
     <div className="Todo">
       <h3 className="TodoItemText">
