@@ -16,15 +16,15 @@ class Store {
 
   createTodo(title: string) {
     return this.todos.push({
-      id: Math.max(0, Math.max(...this.todos.map(({ id }) => id))) + 1,
+      id: Math.random(),
       title,
       completed: true,
     });
   }
   deleteTodo(id: number) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
     console.log(`todos:${this.todos}`);
     console.log(`delete id :${id}`);
-    this.todos = this.todos.filter((todo) => todo.id !== id);
   }
 }
 const store = new Store();

@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import "mobx-react-lite/batchingForReactDom";
 import { FC } from "react";
 import store from "../../../../Store/store";
+import { ITodo } from "../../../../types/types";
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
 import TodoForm from "../TodoForm/todoForm";
@@ -16,7 +17,7 @@ const TodosPage: FC = () => {
       <TodoForm />
       <TodoListObserver
         items={store.todos}
-        renderItem={(todo, index) => (
+        renderItem={(todo: ITodo, index) => (
           <TodoItem key={todo.id} todo={todo} index={index + 1} />
         )}
       />
