@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { ITodo } from "./../types/types";
 
 class Store {
@@ -6,12 +6,7 @@ class Store {
   todo: string = "";
 
   constructor() {
-    makeObservable(this, {
-      todos: observable,
-      createTodo: action,
-      deleteTodo: action,
-      todo: observable,
-    });
+    makeAutoObservable(this);
   }
 
   createTodo(title: string) {
@@ -22,9 +17,10 @@ class Store {
     });
   }
   deleteTodo(id: number) {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
-    console.log(`todos:${this.todos}`);
-    console.log(`delete id :${id}`);
+    this.todos.splice(
+      this.todos.findIndex((todo) => todo.id === id),
+      1
+    );
   }
 }
 const store = new Store();
