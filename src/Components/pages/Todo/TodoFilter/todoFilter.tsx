@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import { FC } from "react";
 import { ITodo } from "../../../../types/types";
 import Header from "../../../UI/Header/header";

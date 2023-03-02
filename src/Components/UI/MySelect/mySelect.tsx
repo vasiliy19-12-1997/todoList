@@ -1,10 +1,11 @@
+import { observer } from "mobx-react";
 import "./mySelect.scss";
 interface MySelectProps<T> {
   options: { value: string; name: string }[];
   value: string;
   onChange: (sort: any) => void;
 }
-export default function MySelect<T>(props: MySelectProps<T>) {
+function MySelect<T>(props: MySelectProps<T>) {
   const { options, value, onChange } = props;
   return (
     <div className="MySelect">
@@ -23,3 +24,4 @@ export default function MySelect<T>(props: MySelectProps<T>) {
     </div>
   );
 }
+export default observer(MySelect);

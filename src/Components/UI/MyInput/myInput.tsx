@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import { FC } from "react";
 import "./myInput.scss";
 interface MyInputProps {
@@ -15,4 +16,4 @@ const MyInput: FC<MyInputProps> = ({ ...props }) => {
   );
 };
 
-export default MyInput;
+export default observer(MyInput);
