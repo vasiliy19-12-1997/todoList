@@ -45,7 +45,9 @@ function TodoItem(props: TodoItemProps) {
     setEdit((a = edit));
     setIsEdit(false);
   };
-
+  const deleteTodo = (id: number) => {
+    store.deleteTodo(todo.id);
+  };
   return (
     <div className="Todo">
       <h3 className="TodoItemText">

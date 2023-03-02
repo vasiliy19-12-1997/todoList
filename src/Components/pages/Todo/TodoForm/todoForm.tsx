@@ -1,28 +1,25 @@
 import { observer } from "mobx-react";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 
+import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoForm.scss";
-import "mobx-react-lite/batchingForReactDom";
-import store from "../../../../Store/store";
 interface TodoFormProps {
   create?: (todo: ITodo) => void;
 }
 const TodoForm: FC<TodoFormProps> = ({ create }) => {
-  // const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTodo({ ...todo, title: e.target.value });
-  // };
+  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value);
+  };
   // console.log(store.createTodo);
+  const [todo, setTodo] = useState("");
 
   return (
     <div className="todoForm">
-      <MyInput
-        value={store.todo}
-        onChange={(e) => (store.todo = e.target.value)}
-      />
-      <MyButton onClick={() => store.createTodo()}>Add TODO</MyButton>
+      <MyInput value={todo} onChange={changeInput} />
+      <MyButton onClick={() => store.createTodo(todo)}>Add TODO</MyButton>
     </div>
   );
 };

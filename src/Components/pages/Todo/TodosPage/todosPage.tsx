@@ -4,6 +4,7 @@ import { FC } from "react";
 import store from "../../../../Store/store";
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
+import TodoFilter from "../TodoFilter/todoFilter";
 import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 
@@ -41,6 +42,7 @@ const TodosPage: FC = () => {
   //   localStorage.setItem("todos", JSON.stringify(store.todos));
   // }, [store.todos]);
   const TodoListObserver = observer(List);
+  // const TodoFormObserver = observer(TodoForm);
   // const TodoItemObserver = observer(TodoItem);
   return (
     <>
