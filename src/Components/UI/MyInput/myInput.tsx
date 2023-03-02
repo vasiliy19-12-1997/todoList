@@ -16,4 +16,4 @@ const MyInput: FC<MyInputProps> = ({ ...props }) => {
   );
 };
 
-export default observer(MyInput);
+export default MyInput;

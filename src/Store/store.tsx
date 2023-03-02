@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import { ITodo } from "./../types/types";
-
+interface Store {
+  filter: { sort: keyof ITodo; query: string };
+}
 class Store {
   todos: ITodo[] = [];
   todo: string = "";

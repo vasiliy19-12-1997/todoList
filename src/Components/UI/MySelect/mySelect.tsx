@@ -24,4 +24,4 @@ function MySelect<T>(props: MySelectProps<T>) {
     </div>
   );
 }
-export default observer(MySelect);
+export default MySelect;

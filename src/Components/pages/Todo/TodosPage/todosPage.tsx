@@ -21,14 +21,15 @@ const TodosPage: FC = () => {
     filter.sort,
     filter.query
   );
+  //locale Storage
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(sortedAndSearchTodos));
   }, [sortedAndSearchTodos]);
   const TodoListObserver = observer(List);
-  const TodoFilterObserver = observer(TodoFilter);
+
   return (
     <>
-      <TodoFilterObserver filter={filter} setFilter={setFilter} />
+      <TodoFilter filter={filter} setFilter={setFilter} />
       <Header>Todo App</Header>
       <TodoForm />
       <TodoListObserver
