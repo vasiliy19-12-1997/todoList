@@ -3,9 +3,9 @@ import { ITodo } from "../types/types";
 
 class Store {
   todos: ITodo[] = [
-    { id: Math.random(), title: "JS", completed: false },
-    { id: Math.random(), title: "TS", completed: false },
-    { id: Math.random(), title: "C#", completed: false },
+    { id: Math.random(), title: "JS", completed: true },
+    { id: Math.random(), title: "TS", completed: true },
+    { id: Math.random(), title: "C#", completed: true },
   ];
 
   constructor() {
@@ -14,8 +14,8 @@ class Store {
   toggle(todo: ITodo) {
     return (todo.completed = !todo.completed);
   }
-  get completedTodoCount() {
-    return this.todos.find((todo) => !todo.completed);
+  get unfinishedTodoCount() {
+    return this.todos.filter((todo) => !todo.completed).length;
   }
   createTodo(title: string) {
     return this.todos.push({
