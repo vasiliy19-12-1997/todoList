@@ -10,60 +10,24 @@ interface TodoItemProps {
   todo: ITodo;
   index: number;
   deleteTodo?: (id: number) => void;
+  tasks?: number;
 }
 
 function TodoItem(props: TodoItemProps) {
   const { todo, index } = props;
-  const [isChecked, setIsChecked] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
-  const [edit, setEdit] = useState("");
-
-  const check = useRef("");
-  let a = edit;
-  const ChangeCheckBox = (e: React.FormEvent<HTMLInputElement>) => {
-    if (isChecked) {
-      setIsChecked((todo.completed = false));
-    } else {
-      setIsChecked((todo.completed = true));
-    }
-  };
-  const ChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEdit(e.target.value);
-  };
-
-  const clickEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (isEdit) {
-      setIsEdit(false);
-    } else {
-      setIsEdit(true);
-    }
-  };
-  console.log(isEdit);
-  const saveEdit = () => {
-    todo.title = edit;
-    a = todo.title;
-    setEdit((a = edit));
-    setIsEdit(false);
-  };
 
   return (
     <div className="Todo">
-      <h3 className="TodoItemText">
-        {!isEdit && index}. {!isEdit && todo.title}
-      </h3>
+      <h3 className="TodoItemText">{todo.title}</h3>
       <div className="TodoItem">
-        <input type="checkbox" onClick={ChangeCheckBox} />
-        <MyButton onClick={clickEdit}>edit</MyButton>
+        <div> tasksLeft:{store.completedTodoCount}</div>
+        <input
+          type="checkbox"
+          onClick={() => store.toggle()}
+          checked={store.completed}
+        />
+
         <MyButton onClick={() => store.deleteTodo(todo.id)}>Delete</MyButton>
-      </div>
-      <div className="TodoItemEdit">
-        {" "}
-        {isEdit && <MyInput value={a} onChange={ChangeTitle} />}
-        {isEdit && (
-          <MyButton value={edit} onClick={saveEdit}>
-            Save
-          </MyButton>
-        )}
       </div>
     </div>
   );

@@ -1,16 +1,26 @@
-import { makeAutoObservable } from "mobx";
-import { ITodo } from "./../types/types";
+import { computed, makeObservable, observable } from "mobx";
+import { ITodo } from "../types/types";
 interface Store {
   filter: { sort: keyof ITodo; query: string };
 }
 class Store {
   todos: ITodo[] = [];
   todo: string = "";
-
+  completed = false;
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      todos: observable,
+      todo: observable,
+      completed: observable,
+      completedTodoCount: computed,
+    });
   }
-
+  toggle() {
+    this.completed = !this.completed;
+  }
+  get completedTodoCount() {
+    return this.todos.filter((todo) => !todo.completed).length;
+  }
   createTodo(title: string) {
     return this.todos.push({
       id: Math.random(),

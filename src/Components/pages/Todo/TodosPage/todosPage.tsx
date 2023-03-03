@@ -34,8 +34,14 @@ const TodosPage: FC = () => {
       <TodoForm />
       <TodoListObserver
         items={store.todos}
+        // tasksLeft={store.completedTodoCount}
         renderItem={(todo, index) => (
-          <TodoItem key={todo.id} todo={todo} index={index + 1} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            index={index + 1}
+            // tasks={store.completedTodoCount}
+          />
         )}
       />
     </>
