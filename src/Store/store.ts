@@ -1,25 +1,21 @@
-import { computed, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { ITodo } from "../types/types";
-interface Store {
-  filter: { sort: keyof ITodo; query: string };
-}
+
 class Store {
-  todos: ITodo[] = [];
-  todo: string = "";
-  completed = false;
+  todos: ITodo[] = [
+    { id: Math.random(), title: "JS", completed: false },
+    { id: Math.random(), title: "TS", completed: false },
+    { id: Math.random(), title: "C#", completed: false },
+  ];
+
   constructor() {
-    makeObservable(this, {
-      todos: observable,
-      todo: observable,
-      completed: observable,
-      completedTodoCount: computed,
-    });
+    makeAutoObservable(this);
   }
-  toggle() {
-    this.completed = !this.completed;
+  toggle(todo: ITodo) {
+    return (todo.completed = !todo.completed);
   }
   get completedTodoCount() {
-    return this.todos.filter((todo) => !todo.completed).length;
+    return this.todos.find((todo) => !todo.completed);
   }
   createTodo(title: string) {
     return this.todos.push({
@@ -34,7 +30,22 @@ class Store {
       1
     );
   }
-}
-const store = new Store();
 
-export default store;
+  saveEdit(todo: ITodo, value: string) {
+    return (todo.title = value);
+  }
+}
+export const store = new Store();
+
+// class StoreFilter {
+//   filter: FilterStore;
+//   constructor() {
+//     makeObservable(this, {
+//       filter: computed,
+//     });
+//   }
+//   get filterComputed() {
+//     return this.filter;
+//   }
+// }
+// export const filterStore = new StoreFilter();

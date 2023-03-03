@@ -1,15 +1,13 @@
 import { observer } from "mobx-react";
 import { FC, useState } from "react";
+import { store } from "../../../../Store/store";
 
-import store from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoForm.scss";
-interface TodoFormProps {
-  create?: (todo: ITodo) => void;
-}
-const TodoForm: FC<TodoFormProps> = ({ create }) => {
+
+const TodoForm: FC = () => {
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
