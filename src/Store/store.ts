@@ -9,11 +9,13 @@ class Store {
   ];
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
+  //сделана задача
   toggle(todo: ITodo) {
     return (todo.completed = !todo.completed);
   }
+  //показывает сколько галочек поставил
   get unfinishedTodoCount() {
     return this.todos.filter((todo) => !todo.completed).length;
   }
@@ -30,22 +32,28 @@ class Store {
       1
     );
   }
-
   saveEdit(todo: ITodo, value: string) {
     return (todo.title = value);
   }
+  sortTodo(sort: keyof ITodo) {
+    if (sort) {
+      return this.todos.sort((a, b) => {
+        const sortFromA = a[sort];
+        const sortFromB = b[sort];
+        if (typeof sortFromA === "string" && typeof sortFromB === "string") {
+          return sortFromA.localeCompare(sortFromB);
+        }
+        if (typeof sortFromA === "number" && typeof sortFromB === "number") {
+          return sortFromA - sortFromB;
+        }
+        if (typeof sortFromA === "boolean" && typeof sortFromB === "boolean") {
+          return +sortFromA - +sortFromB;
+        }
+        throw new Error("Ошибка в сортировке");
+      });
+    }
+    return this.todos;
+  }
 }
-export const store = new Store();
 
-// class StoreFilter {
-//   filter: FilterStore;
-//   constructor() {
-//     makeObservable(this, {
-//       filter: computed,
-//     });
-//   }
-//   get filterComputed() {
-//     return this.filter;
-//   }
-// }
-// export const filterStore = new StoreFilter();
+export const store = new Store();

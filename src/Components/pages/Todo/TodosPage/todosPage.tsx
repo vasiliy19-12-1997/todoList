@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import "mobx-react-lite/batchingForReactDom";
 import { FC } from "react";
 import { store } from "../../../../Store/store";
+import useFilterTodos from "../../../Hooks/useFilterTodos";
 
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
@@ -10,21 +11,17 @@ import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 
 const TodosPage: FC = () => {
-  //фильтр + сортировка
-  // const sortedAndSearchTodos = useFilterTodos(
-  //   store.todos,
-  //   filter.sort,
-  //   filter.query
-  // );
+  // фильтр + сортировка
+
   //locale Storage
   // useEffect(() => {
   //   localStorage.setItem("todos", JSON.stringify(sortedAndSearchTodos));
   // }, [sortedAndSearchTodos]);
   const TodoListObserver = observer(List);
-  // const TodoFIlterObserver = observer(TodoFilter);
+  const TodoFIlterObserver = observer(TodoFilter);
   return (
     <>
-      {/* <TodoFIlterObserver filter={} setFilter={setFilter} /> */}
+      <TodoFIlterObserver />
       <Header>Todo App</Header>
       <TodoForm />
       <TodoListObserver

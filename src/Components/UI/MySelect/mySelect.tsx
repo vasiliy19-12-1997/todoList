@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import "./mySelect.scss";
 interface MySelectProps<T> {
   options: { value: string; name: string }[];

@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import { FC } from "react";
 import "./myInput.scss";
 interface MyInputProps {

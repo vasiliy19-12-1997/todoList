@@ -1,7 +1,5 @@
 import { observer } from "mobx-react-lite";
-import "mobx-react-lite/batchingForReactDom";
 import { store } from "../../../../Store/store";
-
 import { ITodo } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
 import "./todoItem.scss";
@@ -11,7 +9,6 @@ interface TodoItemProps {
   todo: ITodo;
   index: number;
   deleteTodo?: (id: number) => void;
-  tasks?: number;
 }
 
 function TodoItem(props: TodoItemProps) {
@@ -34,27 +31,25 @@ function TodoItem(props: TodoItemProps) {
   };
   const saveEdit = () => {
     store.saveEdit(todo, value);
-
     setIsEdit(false);
   };
   return (
     <div className="Todo">
       <h3 className="TodoItemText">
-        {index}.{todo.title}
+        {index}. {todo.title}
       </h3>
-
       <div className="TodoItem">
         <input type="checkbox" onClick={() => store.toggle(todo)} />
         <MyButton onClick={clickEdit}>Edit</MyButton>
         <MyButton onClick={() => store.deleteTodo(todo.id)}>Delete</MyButton>
-        <div className="TodoItemEdit ">
-          {isEdit && <MyInput value={value} onChange={changeEditTitle} />}
-          {isEdit && (
-            <MyButton value={value} onClick={saveEdit}>
-              Save
-            </MyButton>
-          )}
-        </div>
+      </div>
+      <div className="TodoItemEdit ">
+        {isEdit && <MyInput value={value} onChange={changeEditTitle} />}
+        {isEdit && (
+          <MyButton value={value} onClick={saveEdit}>
+            Save
+          </MyButton>
+        )}
       </div>
     </div>
   );

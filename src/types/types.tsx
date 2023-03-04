@@ -20,3 +20,10 @@ export interface Auth {
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+export interface SortAndQuery {
+  sort: keyof ITodo;
+  query: string;
+}
+export interface IFilter {
+  filter: SortAndQuery;
+}

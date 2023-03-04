@@ -1,10 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/context";
-import "./navbar.scss";
-import { useContext } from "react";
 import { Auth } from "../../../types/types";
 import MyButton from "../MyButton/myButton";
-import Login from "../../pages/Todo/Login/login";
+import "./navbar.scss";
 const Navbar = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as Auth;
   const LogOut = () => {

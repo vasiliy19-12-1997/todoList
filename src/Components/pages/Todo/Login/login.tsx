@@ -18,7 +18,7 @@ const Login: FC = () => {
     localStorage.setItem("auth", "true");
   };
   return (
-    <div>
+    <>
       <h1>Log in</h1>
       <form onSubmit={login}>
         <MyInput placeholder="Enter name" />
@@ -29,7 +29,7 @@ const Login: FC = () => {
         />
         <MyButton>Log in</MyButton>
       </form>
-    </div>
+    </>
   );
 };
 
