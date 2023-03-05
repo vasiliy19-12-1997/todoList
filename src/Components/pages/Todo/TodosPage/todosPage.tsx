@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import "mobx-react-lite/batchingForReactDom";
 import { FC } from "react";
 import { store } from "../../../../Store/store";
-import useFilterTodos from "../../../Hooks/useFilterTodos";
 
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
@@ -18,10 +17,10 @@ const TodosPage: FC = () => {
   //   localStorage.setItem("todos", JSON.stringify(sortedAndSearchTodos));
   // }, [sortedAndSearchTodos]);
   const TodoListObserver = observer(List);
-  const TodoFIlterObserver = observer(TodoFilter);
+
   return (
     <>
-      <TodoFIlterObserver />
+      <TodoFilter />
       <Header>Todo App</Header>
       <TodoForm />
       <TodoListObserver

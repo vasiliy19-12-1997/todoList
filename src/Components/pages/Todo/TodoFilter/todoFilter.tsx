@@ -1,17 +1,10 @@
-import { FC, useState } from "react";
+import { observer } from "mobx-react";
+import { FC } from "react";
 import { store } from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
-import MyInput from "../../../UI/MyInput/myInput";
 import MySelect from "../../../UI/MySelect/mySelect";
-export interface SortAndQuery {
-  sort: keyof ITodo;
-  query: string;
-}
-export interface IFilter {
-  filter: SortAndQuery;
-}
+
 const TodoFilter: FC = () => {
-  const [sortTodo, setSortTodo] = useState<any>();
   const changeSort = (selectedSort: keyof ITodo) => {
     store.sortTodo(selectedSort);
   };
@@ -27,7 +20,7 @@ const TodoFilter: FC = () => {
 
       <MySelect
         onChange={changeSort}
-        value={sortTodo}
+        value={store.filter.sort}
         options={[
           { value: "title", name: "on name" },
           { value: "completed", name: "on completed" },
@@ -38,4 +31,4 @@ const TodoFilter: FC = () => {
   );
 };
 
-export default TodoFilter;
+export default observer(TodoFilter);

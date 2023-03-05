@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { ITodo } from "../types/types";
+import { IFilter, ITodo } from "../types/types";
 
 class Store {
   todos: ITodo[] = [
@@ -8,8 +8,10 @@ class Store {
     { id: Math.random(), title: "C#", completed: true },
   ];
 
+  filter: IFilter = { sort: "title", query: "" };
+
   constructor() {
-    makeAutoObservable(this, {}, { autoBind: true });
+    makeAutoObservable(this);
   }
   //сделана задача
   toggle(todo: ITodo) {
@@ -37,7 +39,7 @@ class Store {
   }
   sortTodo(sort: keyof ITodo) {
     if (sort) {
-      return this.todos.sort((a, b) => {
+      this.todos.sort((a, b) => {
         const sortFromA = a[sort];
         const sortFromB = b[sort];
         if (typeof sortFromA === "string" && typeof sortFromB === "string") {
@@ -52,6 +54,7 @@ class Store {
         throw new Error("Ошибка в сортировке");
       });
     }
+    this.filter.sort = sort;
     return this.todos;
   }
 }

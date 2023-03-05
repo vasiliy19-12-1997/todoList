@@ -2,7 +2,6 @@ import { observer } from "mobx-react";
 import { FC, useState } from "react";
 import { store } from "../../../../Store/store";
 
-import { ITodo } from "../../../../types/types";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 

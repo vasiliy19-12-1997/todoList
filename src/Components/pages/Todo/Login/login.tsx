@@ -1,11 +1,12 @@
 import { FC, useContext, useState } from "react";
 import { AuthContext } from "../../../../Context/context";
-import { Auth } from "../../../../types/types";
+import { IAuth } from "../../../../types/types";
+
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "../../../UI/MyInput/myInput";
 
 const Login: FC = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext) as Auth;
+  const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
   const [password, setPassword] = useState("");
   const CheckPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
