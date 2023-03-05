@@ -10,7 +10,7 @@ const Login: FC = () => {
   const [password, setPassword] = useState("");
   const CheckPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    if (e.target.value === "127571") {
+    if (e.target.value === "111") {
       setIsAuth(true);
     }
   };
@@ -22,12 +22,8 @@ const Login: FC = () => {
     <>
       <h1>Log in</h1>
       <form onSubmit={login}>
-        <MyInput placeholder="Enter name" />
-        <MyInput
-          placeholder="Enter password"
-          value={password}
-          onChange={CheckPassword}
-        />
+        <MyInput placeholder="admin" />
+        <MyInput placeholder="111" value={password} onChange={CheckPassword} />
         <MyButton>Log in</MyButton>
       </form>
     </>

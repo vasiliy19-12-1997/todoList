@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./myInput.scss";
 interface MyInputProps {
   value?: string;
-  onChange?: (query: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (query: React.ChangeEvent<HTMLInputElement> & string) => void;
   placeholder?: string;
 }
 

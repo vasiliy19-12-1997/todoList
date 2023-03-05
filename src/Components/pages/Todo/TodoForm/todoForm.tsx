@@ -6,12 +6,11 @@ import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 
 const TodoForm: FC = () => {
+  // console.log(store.createTodo);
+  const [todo, setTodo] = useState("");
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
-  // console.log(store.createTodo);
-  const [todo, setTodo] = useState("");
-
   return (
     <>
       <MyInput value={todo} onChange={changeInput} />
