@@ -2,12 +2,20 @@ import { makeAutoObservable } from "mobx";
 import { IFilter, ITodo } from "../types/types";
 
 class Store {
-  todos: ITodo[] = [this.getLocaleTodos()];
+  todos: ITodo[] = [
+    {
+      id: Math.random(),
+      title: "JS",
+      completed: true,
+    },
+    { id: Math.random(), title: "TS", completed: true },
+    { id: Math.random(), title: "C#", completed: true },
+  ];
 
   filter: IFilter = { sort: "title", query: "" };
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
   //сделана задача
@@ -52,26 +60,24 @@ class Store {
       });
     }
     this.filter.sort = sort;
-    return this.todos;
+    return [this.todos];
   }
   searchQuery(query: string) {
     return this.todos.find((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
   }
+
   getLocaleTodos() {
     const stored = localStorage.getItem("todos");
     if (stored) {
       return JSON.parse(stored);
     }
     if (!stored) {
-      return alert("Error in localeStorage");
+      return;
     } else {
       return store.todos;
     }
-  }
-  updateSite() {
-    localStorage.setItem("todos", JSON.stringify(store.todos));
   }
 }
 

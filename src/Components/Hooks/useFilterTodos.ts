@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import { useMemo } from "react";
 import { ITodo } from "../../types/types";
 

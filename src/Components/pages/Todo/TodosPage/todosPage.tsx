@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import "mobx-react-lite/batchingForReactDom";
 import { FC, useEffect } from "react";
 import { store } from "../../../../Store/store";
+import useFilterTodos from "../../../Hooks/useFilterTodos";
 
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
@@ -11,10 +12,11 @@ import TodoItem from "../TodoItem/todoItem";
 
 const TodosPage: FC = () => {
   // locale Storage
+
   useEffect(() => {
-    store.updateSite();
-    console.log(store.todos);
+    localStorage.setItem("todos", JSON.stringify(store.todos));
   }, []);
+
   const TodoListObserver = observer(List);
 
   return (
