@@ -1,6 +1,6 @@
 import { store } from "../../Store/store";
 
-//тип T дает нам отрисовывать любые типы массивов(todos, users)
+//тип T дает нам отрисовывать любые типы массивов(todos, users...)
 interface ListProps<T> {
   items: T[];
   renderItem: (item: T, index: number) => React.ReactNode;

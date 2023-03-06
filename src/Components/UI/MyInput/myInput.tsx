@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, HTMLInputTypeAttribute } from "react";
 import "./myInput.scss";
+
 interface MyInputProps {
   value?: string;
   onChange?: (query: React.ChangeEvent<HTMLInputElement> & string) => void;
   placeholder?: string;
+  type?: HTMLInputTypeAttribute;
 }
 
 const MyInput: FC<MyInputProps> = ({ ...props }) => {

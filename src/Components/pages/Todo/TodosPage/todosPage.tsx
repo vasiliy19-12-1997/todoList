@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import "mobx-react-lite/batchingForReactDom";
 import { FC, useEffect } from "react";
 import { store } from "../../../../Store/store";
-import useFilterTodos from "../../../Hooks/useFilterTodos";
 
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
@@ -14,7 +13,7 @@ const TodosPage: FC = () => {
   // locale Storage
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(store.todos));
+    store.getTodos();
   }, []);
 
   const TodoListObserver = observer(List);

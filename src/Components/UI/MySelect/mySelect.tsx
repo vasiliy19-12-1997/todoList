@@ -1,4 +1,3 @@
-import { ISort, ITodo } from "../../../types/types";
 import "./mySelect.scss";
 interface MySelectProps<T> {
   options: { value: string; name: string }[];

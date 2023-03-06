@@ -2,20 +2,12 @@ import { makeAutoObservable } from "mobx";
 import { IFilter, ITodo } from "../types/types";
 
 class Store {
-  todos: ITodo[] = [
-    {
-      id: Math.random(),
-      title: "JS",
-      completed: true,
-    },
-    { id: Math.random(), title: "TS", completed: true },
-    { id: Math.random(), title: "C#", completed: true },
-  ];
-
+  todos: ITodo[] = this.getLocaleTodos();
   filter: IFilter = { sort: "title", query: "" };
 
   constructor() {
-    makeAutoObservable(this, {}, { autoBind: true });
+    makeAutoObservable(this);
+    this.todos = this.getLocaleTodos();
   }
 
   //сделана задача
@@ -26,22 +18,30 @@ class Store {
   get unfinishedTodoCount() {
     return this.todos.filter((todo) => !todo.completed).length;
   }
+  //создать задачу
   createTodo(title: string) {
-    return this.todos.push({
+    this.todos.push({
       id: Math.random(),
       title,
       completed: true,
     });
+    //сохраним в locale storage
+    const todos = localStorage.setItem("todos", JSON.stringify(store.todos));
+    return todos;
   }
+  //удалим задачу
   deleteTodo(id: number) {
     this.todos.splice(
       this.todos.findIndex((todo) => todo.id === id),
       1
     );
   }
+
+  //сохранить при изменении туду
   saveEdit(todo: ITodo, value: string) {
     return (todo.title = value);
   }
+  //сортирока
   sortTodo(sort: keyof ITodo) {
     if (sort) {
       this.todos.sort((a, b) => {
@@ -62,23 +62,23 @@ class Store {
     this.filter.sort = sort;
     return [this.todos];
   }
+  //поиск по запросу
   searchQuery(query: string) {
-    return this.todos.find((todo) =>
+    this.todos.find((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
   }
-
   getLocaleTodos() {
     const stored = localStorage.getItem("todos");
     if (stored) {
       return JSON.parse(stored);
-    }
-    if (!stored) {
-      return;
-    } else {
-      return store.todos;
+    } else if (!stored) {
+      return [];
     }
   }
+  //из locale storage
+  getTodos() {
+    localStorage.getItem("todos");
+  }
 }
-
 export const store = new Store();

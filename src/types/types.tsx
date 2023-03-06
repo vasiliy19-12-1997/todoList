@@ -26,5 +26,4 @@ export interface ISort {
 export interface IQuery {
   query: string;
 }
-
 export interface IFilter extends ISort, IQuery {}

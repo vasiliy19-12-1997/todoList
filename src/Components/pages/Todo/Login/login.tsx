@@ -8,12 +8,15 @@ import MyInput from "../../../UI/MyInput/myInput";
 const Login: FC = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
   const [password, setPassword] = useState("");
-  const CheckPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [log, setLog] = useState("admin");
+
+  const checkPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (e.target.value === "111") {
       setIsAuth(true);
     }
   };
+
   const login = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.setItem("auth", "true");
@@ -22,8 +25,13 @@ const Login: FC = () => {
     <>
       <h1>Log in</h1>
       <form onSubmit={login}>
-        <MyInput placeholder="admin" />
-        <MyInput placeholder="111" value={password} onChange={CheckPassword} />
+        <MyInput placeholder="admin" value={log} onChange={checkPassword} />
+        <MyInput
+          type="password"
+          placeholder="111"
+          value={password}
+          onChange={checkPassword}
+        />
         <MyButton>Log in</MyButton>
       </form>
     </>
