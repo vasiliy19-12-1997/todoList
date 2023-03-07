@@ -1,5 +1,6 @@
 import { FC, useContext, useState } from "react";
 import { AuthContext } from "../../../../Context/context";
+import { store } from "../../../../Store/store";
 import { IAuth } from "../../../../types/types";
 
 import MyButton from "../../../UI/MyButton/myButton";
@@ -7,15 +8,9 @@ import MyInput from "../../../UI/MyInput/myInput";
 
 const Login: FC = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
-  const [password, setPassword] = useState("");
-  const [log, setLog] = useState("admin");
 
-  const checkPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    if (e.target.value === "111") {
-      setIsAuth(true);
-    }
-  };
+  const checkPassword = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const checkAdmin = () => {};
 
   const login = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,11 +20,11 @@ const Login: FC = () => {
     <>
       <h1>Log in</h1>
       <form onSubmit={login}>
-        <MyInput placeholder="admin" value={log} onChange={checkPassword} />
+        <MyInput placeholder="admin" />
         <MyInput
           type="password"
           placeholder="111"
-          value={password}
+          value={store.auth.password}
           onChange={checkPassword}
         />
         <MyButton>Log in</MyButton>

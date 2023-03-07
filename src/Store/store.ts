@@ -1,15 +1,20 @@
-import { makeAutoObservable } from "mobx";
-import { IFilter, ITodo } from "../types/types";
+import { computed, makeAutoObservable } from "mobx";
+import { IAdmin, ICheckAuth, IFilter, IPassword, ITodo } from "../types/types";
 
 class Store {
   todos: ITodo[] = this.getLocaleTodos();
   filter: IFilter = { sort: "title", query: "" };
-
+  auth: ICheckAuth = { password: "", admin: "" };
   constructor() {
     makeAutoObservable(this);
     this.todos = this.getLocaleTodos();
   }
-
+  changePassword(e: string) {
+    this.auth.password = e;
+  }
+  changeAdmin(e: string) {
+    this.auth.admin = e;
+  }
   //сделана задача
   toggle(todo: ITodo) {
     return (todo.completed = !todo.completed);
