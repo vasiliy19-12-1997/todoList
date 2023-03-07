@@ -1,6 +1,7 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { AuthContext } from "../../../../Context/context";
 import { store } from "../../../../Store/store";
+
 import { IAuth } from "../../../../types/types";
 
 import MyButton from "../../../UI/MyButton/myButton";
@@ -20,14 +21,13 @@ const Login: FC = () => {
     <>
       <h1>Log in</h1>
       <form onSubmit={login}>
-        <MyInput placeholder="admin" />
+        <MyInput type="text" placeholder="admin" value={store.auth.admin} />
         <MyInput
           type="password"
           placeholder="111"
           value={store.auth.password}
-          onChange={checkPassword}
         />
-        <MyButton>Log in</MyButton>
+        <MyButton>Sign in</MyButton>
       </form>
     </>
   );

@@ -4,16 +4,15 @@ import { IAdmin, ICheckAuth, IFilter, IPassword, ITodo } from "../types/types";
 class Store {
   todos: ITodo[] = this.getLocaleTodos();
   filter: IFilter = { sort: "title", query: "" };
-  auth: ICheckAuth = { password: "", admin: "" };
+  auth: ICheckAuth = { password: "111", admin: "admin" };
+  // event: React.ChangeEvent<HTMLInputElement> | string;
   constructor() {
     makeAutoObservable(this);
     this.todos = this.getLocaleTodos();
+    // this.event = "";
   }
-  changePassword(e: string) {
-    this.auth.password = e;
-  }
-  changeAdmin(e: string) {
-    this.auth.admin = e;
+  onChange(e: React.ChangeEvent<HTMLInputElement> | string) {
+    this.onChange((e.target.value = this.auth.admin));
   }
   //сделана задача
   toggle(todo: ITodo) {
