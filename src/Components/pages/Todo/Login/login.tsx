@@ -1,6 +1,6 @@
-import { FC, useContext } from "react";
+import { observer } from "mobx-react";
+import { FC, useContext, useState } from "react";
 import { AuthContext } from "../../../../Context/context";
-import { store } from "../../../../Store/store";
 
 import { IAuth } from "../../../../types/types";
 
@@ -9,23 +9,37 @@ import MyInput from "../../../UI/MyInput/myInput";
 
 const Login: FC = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
+  const [admin, setAdmin] = useState("");
+  const [password, setPassword] = useState("");
 
-  const checkPassword = (e: React.ChangeEvent<HTMLInputElement>) => {};
-  const checkAdmin = () => {};
-
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+  const onChangeAdmin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAdmin(e.target.value);
+  };
   const login = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem("auth", "true");
+    if (admin === "admin" && password === "111") {
+      setIsAuth(true);
+      localStorage.setItem("auth", "true");
+    }
   };
   return (
     <>
-      <h1>Log in</h1>
+      <h1 style={{ display: "flex", justifyContent: "center" }}>Sign in </h1>
       <form onSubmit={login}>
-        <MyInput type="text" placeholder="admin" value={store.auth.admin} />
+        <MyInput
+          type="text"
+          placeholder="admin"
+          value={admin}
+          onChange={onChangeAdmin}
+        />
         <MyInput
           type="password"
           placeholder="111"
-          value={store.auth.password}
+          value={password}
+          onChange={onChangePassword}
         />
         <MyButton>Sign in</MyButton>
       </form>
@@ -33,4 +47,4 @@ const Login: FC = () => {
   );
 };
 
-export default Login;
+export default observer(Login);

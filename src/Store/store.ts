@@ -1,19 +1,17 @@
-import { computed, makeAutoObservable } from "mobx";
-import { IAdmin, ICheckAuth, IFilter, IPassword, ITodo } from "../types/types";
+import { makeAutoObservable } from "mobx";
+import { SyntheticEvent } from "react";
+import { ICheckAuth, IFilter, ITodo } from "../types/types";
 
 class Store {
   todos: ITodo[] = this.getLocaleTodos();
   filter: IFilter = { sort: "title", query: "" };
-  auth: ICheckAuth = { password: "111", admin: "admin" };
-  // event: React.ChangeEvent<HTMLInputElement> | string;
+  auth: ICheckAuth = { password: "", admin: "" };
+
   constructor() {
     makeAutoObservable(this);
     this.todos = this.getLocaleTodos();
-    // this.event = "";
   }
-  onChange(e: React.ChangeEvent<HTMLInputElement> | string) {
-    this.onChange((e.target.value = this.auth.admin));
-  }
+
   //сделана задача
   toggle(todo: ITodo) {
     return (todo.completed = !todo.completed);
@@ -22,23 +20,25 @@ class Store {
   get unfinishedTodoCount() {
     return this.todos.filter((todo) => !todo.completed).length;
   }
-  //создать задачу
+
   createTodo(title: string) {
     this.todos.push({
       id: Math.random(),
       title,
       completed: true,
     });
-    //сохраним в locale storage
+
     const todos = localStorage.setItem("todos", JSON.stringify(store.todos));
     return todos;
   }
-  //удалим задачу
+
   deleteTodo(id: number) {
     this.todos.splice(
       this.todos.findIndex((todo) => todo.id === id),
       1
     );
+    //фиксить надо удаляет все туду
+    localStorage.removeItem("todos");
   }
 
   //сохранить при изменении туду
