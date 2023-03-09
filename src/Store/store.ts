@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { SyntheticEvent } from "react";
 import { ICheckAuth, IFilter, ITodo } from "../types/types";
 
 class Store {
@@ -71,7 +70,9 @@ class Store {
     this.todos.find((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
+    this.filter.query = query;
   }
+
   getLocaleTodos() {
     const stored = localStorage.getItem("todos");
     if (stored) {
@@ -80,7 +81,7 @@ class Store {
       return [];
     }
   }
-  //из locale storage
+
   getTodos() {
     localStorage.getItem("todos");
   }

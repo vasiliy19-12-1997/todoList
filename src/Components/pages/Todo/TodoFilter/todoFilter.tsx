@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { store } from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyInput from "../../../UI/MyInput/myInput";
@@ -10,7 +10,6 @@ const TodoFilter: FC = () => {
     store.sortTodo(selectedSort);
   };
   const changeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-    store.filter.query = e.target.value;
     store.searchQuery(e.target.value);
     console.log(`${store.filter.query} работает`);
   };
