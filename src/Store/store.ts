@@ -64,7 +64,7 @@ class Store {
       });
     }
     this.filter.sort = sort;
-    return [this.todos];
+    console.log(`sort работает ${this.filter.sort}`);
   }
   //поиск по запросу
   searchQuery(query: string) {

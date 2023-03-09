@@ -6,23 +6,20 @@ import MyInput from "../../../UI/MyInput/myInput";
 import MySelect from "../../../UI/MySelect/mySelect";
 
 const TodoFilter: FC = () => {
-  const [value, setValue] = useState("");
   const changeSort = (selectedSort: keyof ITodo) => {
     store.sortTodo(selectedSort);
   };
-  function changeQuery(query: string) {
-    const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
-    };
-    store.searchQuery(query);
-    return changeInput;
-  }
+  const changeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    store.filter.query = e.target.value;
+    store.searchQuery(e.target.value);
+    console.log(`${store.filter.query} работает`);
+  };
 
   return (
     <>
       <MyInput
         placeholder="Введите запрос"
-        value={value}
+        value={store.filter.query}
         onChange={changeQuery}
       />
 
