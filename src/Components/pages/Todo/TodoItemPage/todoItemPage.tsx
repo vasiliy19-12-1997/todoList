@@ -21,7 +21,7 @@ const TodoItemPage: FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <MyButton onClick={() => navigate(`/todos`)}>Back</MyButton>
 
       <h1>Страница пользователя {todo?.id}</h1>
@@ -30,7 +30,7 @@ const TodoItemPage: FC = () => {
         закончена
         {todo?.completed}
       </div>
-    </div>
+    </>
   );
 };
 

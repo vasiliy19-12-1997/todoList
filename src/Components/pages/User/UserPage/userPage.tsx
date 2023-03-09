@@ -23,7 +23,7 @@ const UserPage: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <List
         items={users}
         renderItem={(user: IUser) => (
@@ -34,7 +34,7 @@ const UserPage: FC = () => {
           />
         )}
       />
-    </div>
+    </>
   );
 };
 

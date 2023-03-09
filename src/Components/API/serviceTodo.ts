@@ -1,7 +1,4 @@
 import axios from "axios";
-import React from "react";
-import { useParams } from "react-router-dom";
-import { ITodo } from "../../types/types";
 
 export default class ServiceTodo {
   static async getTodos(limit = 10, page = 1) {

@@ -14,10 +14,22 @@ interface UserItemProps {
 
 const UserItem: FC<UserItemProps> = ({ user, onClick }) => {
   return (
+<<<<<<< HEAD
     <div onClick={() => onClick(user)}>
       {user.id}. {user.name} проживает в городе {user.address.city} по адресу{" "}
       {user.address.street}
     </div>
+=======
+    <>
+      <div
+        onClick={() => onClick(user)}
+        style={{ padding: "15px", border: "1px solid teal" }}
+      >
+        {user.id}. {user.name} проживает в городе {user.address.city} на улице{" "}
+        {user.address.street}
+      </div>
+    </>
+>>>>>>> MobX
   );
 };
 

@@ -1,33 +1,22 @@
-import React, { FC, useState } from "react";
-import { ITodo } from "../../../../types/types";
-import "./todoForm.scss";
-import MyInput from "./../../../UI/MyInput/myInput";
-import MyButton from "./../../../UI/MyButton/myButton";
-interface TodoFormProps {
-  create: (todo: ITodo) => void;
-}
-const TodoForm: FC<TodoFormProps> = ({ create }) => {
-  const [todo, setTodo] = useState({
-    title: "",
-    completed: false,
-  });
-  const addTodo = () => {
-    const newTask = {
-      ...todo,
-      id: Math.random(),
-    };
-    create(newTask);
-  };
-  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo({ ...todo, title: e.target.value });
-  };
+import { observer } from "mobx-react";
+import { FC, useState } from "react";
+import { store } from "../../../../Store/store";
 
+import MyButton from "./../../../UI/MyButton/myButton";
+import MyInput from "./../../../UI/MyInput/myInput";
+
+const TodoForm: FC = () => {
+  // console.log(store.createTodo);
+  const [todo, setTodo] = useState("");
+  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value);
+  };
   return (
-    <div className="todoForm">
-      <MyInput value={todo.title} onChange={changeInput} />
-      <MyButton onClick={addTodo}>Add TODO</MyButton>
-    </div>
+    <>
+      <MyInput value={todo} onChange={changeInput} />
+      <MyButton onClick={() => store.createTodo(todo)}>Add TODO</MyButton>
+    </>
   );
 };
 
-export default TodoForm;
+export default observer(TodoForm);
