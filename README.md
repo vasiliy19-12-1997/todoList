@@ -58,8 +58,6 @@ I chose to build this in React, using MobX to manage the application state.
 
 **Why MobX?** - I started the project from the develop branch and there I used hooks and context, but then I found out about MobX and when I started using it, I realized that I didn't need to throw the state through many components and all the logic of methods and states is stored in one place, I liked it
 
-**Why Material-UI** - The authors have done a fantastic job creating components that are visually attractive, precise and also functional. I knew it would be a great library to get me up and running quickly.
-
 
 ## Project Structure
 
