@@ -15,9 +15,23 @@ export interface ITodo {
   title: string;
   completed: boolean;
 }
-export interface Auth {
+export interface IAuth {
   isAuth: boolean;
   setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+export interface ISort {
+  sort: keyof ITodo;
+}
+export interface IQuery {
+  query: string;
+}
+export interface IFilter extends ISort, IQuery {}
+export interface IPassword {
+  password: string;
+}
+export interface IAdmin {
+  admin: string;
+}
+export interface ICheckAuth extends IPassword, IAdmin {}
