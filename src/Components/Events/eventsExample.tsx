@@ -1,7 +1,4 @@
-
 import { FC, useRef, useState } from "react";
-import MyButton from "../UI/MyButton/myButton";
-
 
 const EventsExample: FC = () => {
   const [value, setValue] = useState<string>("");
