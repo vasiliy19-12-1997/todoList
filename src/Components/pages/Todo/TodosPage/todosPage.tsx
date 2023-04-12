@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import "mobx-react-lite/batchingForReactDom";
 import { FC, useEffect } from "react";
 import { store } from "../../../../Store/store";
 
@@ -10,8 +9,6 @@ import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 
 const TodosPage: FC = () => {
-  // locale Storage
-
   useEffect(() => {
     store.getTodos();
   }, []);

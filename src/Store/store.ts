@@ -13,7 +13,9 @@ class Store {
 
   //сделана задача
   toggle(todo: ITodo) {
-    return (todo.completed = !todo.completed);
+    const complete = (todo.completed = !todo.completed);
+
+    localStorage.setItem("complete", JSON.stringify(complete));
   }
   //показывает сколько галочек поставил
   get unfinishedTodoCount() {
@@ -84,6 +86,7 @@ class Store {
 
   getTodos() {
     localStorage.getItem("todos");
+    localStorage.getItem("complete");
   }
 }
 export const store = new Store();
