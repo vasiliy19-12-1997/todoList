@@ -1,5 +1,4 @@
 import { BrowserRouter } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import AppRouter from "./Components/AppRouter/appRouter";
 import Navbar from "./Components/UI/Navbar/navbar";

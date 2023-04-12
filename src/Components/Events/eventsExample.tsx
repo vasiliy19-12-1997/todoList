@@ -1,17 +1,9 @@
 import { FC, useRef, useState } from "react";
-import MyButton from "../UI/MyButton/myButton";
 
 const EventsExample: FC = () => {
   const [value, setValue] = useState<string>("");
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-  const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(inputRef.current?.value);
-  };
   const dragHandler = (e: React.DragEvent<HTMLDivElement>) => {
     console.log("Drag");
   };
@@ -24,33 +16,40 @@ const EventsExample: FC = () => {
     e.preventDefault();
     setIsDrag(false);
   };
-  const drugWithPreventHandler = (e: React.DragEvent<HTMLDivElement>) => {
+  const dragWithPreventHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDrag(true);
   };
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(inputRef.current?.value);
+  };
   return (
     <div>
-      <input value={value} onChange={changeHandler} placeholder="управляемый" />
-      <input ref={inputRef} placeholder="неуправляемый" />
-      <button onClick={clickHandler}>BUTTon</button>
+      <input ref={inputRef} />
+      <input onChange={changeHandler} />
+      <button onClick={clickHandler}>fdfdfdf</button>
       <div
-        onDrag={dragHandler}
+        onDrop={dragHandler}
         draggable
         style={{
           width: "200px",
           height: "200px",
-          background: isDrag ? "red" : "blue",
+          background: "red",
         }}
       ></div>
       <div
         onDrop={dropHandler}
         onDragLeave={leaveHandler}
-        onDragOver={drugWithPreventHandler}
+        onDragOver={dragWithPreventHandler}
         style={{
           width: "200px",
           height: "200px",
-          background: "blue",
-          marginTop: "15px",
+          background: isDrag ? "blue" : "red",
+          marginTop: "20px",
         }}
       ></div>
     </div>

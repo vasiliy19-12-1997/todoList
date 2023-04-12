@@ -10,7 +10,6 @@ interface CardProps {
   variant: CardVariant;
   onClick: (num: number) => void;
 }
-
 const Card: FC<PropsWithChildren<CardProps>> = ({
   width,
   height,
@@ -21,13 +20,13 @@ const Card: FC<PropsWithChildren<CardProps>> = ({
   const [state, setState] = useState(0);
   return (
     <div
-      onClick={() => onClick(state)}
       style={{
         width,
         height,
-        border: variant === CardVariant.outlined ? "1px solid black" : "none",
+        border: variant === CardVariant.outlined ? "3px solid black" : "none",
         background: variant === CardVariant.primary ? "lightgray" : "",
       }}
+      onClick={() => onClick(state)}
     >
       {children}
     </div>
