@@ -1,0 +1,68 @@
+$primary-color: #4793ff;
+$light-background: rgba(#eee, 0.3);
+$box-shadow: 1px 1px 32px 2px rgba(34, 60, 80, 0.2);
+$border-radius: 20px;
+
+$light-color: #000;
+$dark-color: #fff;
+$base-color: #939cb0;
+$light-hover-color: rgb(128, 135, 139);
+
+$body-background-dark: #0d1117;
+$body-background-light: rgba(#eee, 0.3);
+
+$components-background-dark: #4f4f4f;
+$components-background-light: #fff;
+
+$card-background-light: rgba(71, 147, 255, 0.2);
+$card-background-dark: #2e3035;
+
+$card-box-shadow-light: 0px 3px 20px rgba(147, 144, 144, 0.28);
+$card-box-shadow-dark: 0px 3px 20px rgba(5, 5, 5, 0.28);
+%button-template {
+  background-color: #4793ff;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  font-size: 1.2rem;
+  @media (max-width: 1780px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 1500px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 1240px) {
+    font-size: 1rem;
+  }
+}
+:root {
+  //body-background
+  --body-background-dark: #{$body-background-dark};
+  --body-background-light: #{$body-background-light};
+  --body-background-default: var(#{--body-background-light});
+
+  //components-background
+  --components-background-dark: #{$components-background-dark};
+  --components-background-light: #{$components-background-light};
+  --components-background-default: var(#{--components-background-light});
+
+  //card-background
+  --card-background-dark: #{$card-background-dark};
+  --card-background-light: #{$card-background-light};
+  --card-background-default: var(#{--card-background-light});
+
+  //card-shadow
+  --card-shadow-dark: #{$card-box-shadow-dark};
+  --card-shadow-light: #{$card-box-shadow-light};
+  --card-shadow-default: var(#{--card-shadow-light});
+
+  //text
+  --text-color-dark: #{$dark-color};
+  --text-color-light: #{$light-color};
+  --text-color-hover-light: #{$light-hover-color};
+  --text-color-default: var(#{var(--text-color-light)});
+  --text-color-hover-default: var(#{--text-color-hover-light});
+}
