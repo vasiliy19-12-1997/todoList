@@ -1,6 +1,9 @@
+@import "../../../../Styles/properties.scss";
+
 .Todo {
   border: 2px solid teal;
   margin: 10px;
+  background: var(#{--card-background-default});
 }
 .TodoItem {
   display: grid;

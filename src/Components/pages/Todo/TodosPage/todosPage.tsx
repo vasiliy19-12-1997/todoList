@@ -14,7 +14,6 @@ const TodosPage: FC = () => {
   }, []);
 
   const TodoListObserver = observer(List);
-
   return (
     <>
       <TodoFilter />

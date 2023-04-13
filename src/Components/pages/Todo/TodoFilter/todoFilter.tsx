@@ -1,16 +1,19 @@
-import { observer } from "mobx-react";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { store } from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
 import MyInput from "../../../UI/MyInput/myInput";
 import MySelect from "../../../UI/MySelect/mySelect";
+import { observer } from "mobx-react-lite";
 
 const TodoFilter: FC = () => {
+  const [value, setValue] = useState("");
   const changeSort = (selectedSort: keyof ITodo) => {
     store.sortTodo(selectedSort);
   };
   const changeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-    store.searchQuery(e.target.value);
+    const value = e.target.value;
+    store.getSearchQuery(value);
+    setValue(value);
     console.log(`${store.filter.query} работает`);
   };
 
@@ -18,7 +21,7 @@ const TodoFilter: FC = () => {
     <>
       <MyInput
         placeholder="Введите запрос"
-        value={store.filter.query}
+        value={value}
         onChange={changeQuery}
       />
 
