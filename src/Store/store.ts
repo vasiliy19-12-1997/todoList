@@ -21,12 +21,7 @@ class Store {
   }
 
   createTodo(title: string) {
-    this.todos.push({
-      id: Math.random(),
-      title,
-      completed: true,
-    });
-
+    this.todos.push({ id: Math.random(), title, completed: true });
     const todos = localStorage.setItem("todos", JSON.stringify(store.todos));
     return todos;
   }
@@ -36,15 +31,13 @@ class Store {
       this.todos.findIndex((todo) => todo.id === id),
       1
     );
-    //фиксить надо удаляет все туду
-    localStorage.removeItem("todos");
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 
   //сохранить при изменении туду
   saveEdit(todo: ITodo, value: string) {
     return (todo.title = value);
   }
-  //сортирока
   sortTodo(sort: keyof ITodo) {
     if (sort) {
       this.todos.sort((a, b) => {
@@ -66,13 +59,16 @@ class Store {
     console.log(`sort работает ${this.filter.sort}`);
   }
   //поиск по запросу
-  searchQuery(query: string) {
-    this.todos.find((todo) =>
+  setSearchQuery(query: string) {
+    this.filter.query = query;
+  }
+  getSearchQuery(query: string) {
+    const searchTodo = this.todos.filter((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
     this.filter.query = query;
+    return searchTodo;
   }
-
   getLocaleTodos() {
     const stored = localStorage.getItem("todos");
     if (stored) {

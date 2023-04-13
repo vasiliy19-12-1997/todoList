@@ -10,14 +10,11 @@ import TodoForm from "../TodoForm/todoForm";
 import TodoItem from "../TodoItem/todoItem";
 
 const TodosPage: FC = () => {
-  // locale Storage
-
   useEffect(() => {
     store.getTodos();
   }, []);
 
   const TodoListObserver = observer(List);
-
   return (
     <>
       <TodoFilter />
