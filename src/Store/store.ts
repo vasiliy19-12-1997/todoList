@@ -15,7 +15,7 @@ class Store {
   toggle(todo: ITodo) {
     const complete = (todo.completed = !todo.completed);
 
-    localStorage.setItem("complete", JSON.stringify(complete));
+    localStorage.setItem("completeTodo", JSON.stringify(complete));
   }
   //показывает сколько галочек поставил
   get unfinishedTodoCount() {
@@ -34,12 +34,13 @@ class Store {
       1
     );
     //фиксить надо удаляет все туду
-    localStorage.removeItem("todos");
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 
   //сохранить при изменении туду
   saveEdit(todo: ITodo, value: string) {
-    return (todo.title = value);
+    todo.title = value;
+    return localStorage.setItem("todos", JSON.stringify(this.todos));
   }
   sortTodo(sort: keyof ITodo) {
     if (sort) {
@@ -83,7 +84,7 @@ class Store {
 
   getTodos() {
     localStorage.getItem("todos");
-    localStorage.getItem("complete");
+    localStorage.getItem("completeTodo");
   }
 }
 export const store = new Store();

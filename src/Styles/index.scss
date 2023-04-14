@@ -2,19 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
 * {
   font-family: "Open Sans", sans-serif;
+  box-shadow: $box-shadow;
 }
 body {
   box-sizing: border-box;
   font-size: 20px;
   background: var(#{--body-background-default});
+  color: var(#{--text-color-default});
+  border: 1px solid rgba(117, 130, 244, 0.8);
+  backdrop-filter: blur(250px);
 }
-code {
-}
+
 #root {
   display: grid;
   justify-content: center;
   align-content: center;
   grid-template-columns: 1400px;
+
   @media (max-width: 1700px) {
     grid-template-columns: 1200px;
     font-size: 20px;

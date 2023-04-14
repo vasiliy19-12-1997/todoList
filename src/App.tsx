@@ -10,7 +10,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem("auth")) {
+    if (localStorage.getItem("authTodo")) {
       setIsAuth(true);
     }
     setIsLoading(false);

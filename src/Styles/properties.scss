@@ -1,21 +1,25 @@
 $primary-color: #4793ff;
 $light-background: rgba(#eee, 0.3);
-$box-shadow: 1px 1px 32px 2px rgba(34, 60, 80, 0.2);
+$box-shadow: -40px 60px 170px rgba(59, 38, 123, 0.3);
 $border-radius: 20px;
 
-$light-color: #000;
-$dark-color: #fff;
+$light-color: #ffffff;
+$dark-color: #f2f2f2;
 $base-color: #939cb0;
 $light-hover-color: rgb(128, 135, 139);
 
-$body-background-dark: #1b0a31;
-$body-background-light: rgba(#eee, 0.3);
+$body-background-dark: rgba(148, 9, 255, 0.411);
+$body-background-light: #1b0a31;
 
-$components-background-dark: #4f4f4f;
+$components-background-dark: #6b6969;
 $components-background-light: #fff;
 
-$card-background-light: rgba(71, 147, 255, 0.2);
-$card-background-dark: #cc8bff;
+$card-background-light: linear-gradient(
+  89.95deg,
+  rgba(182, 182, 182, 0.2) 1.8%,
+  rgba(67, 66, 90, 0) 105.69%
+);
+$card-background-dark: #3d3c3c;
 
 $card-box-shadow-light: 0px 3px 20px rgba(147, 144, 144, 0.28);
 $card-box-shadow-dark: 0px 3px 20px rgba(5, 5, 5, 0.28);

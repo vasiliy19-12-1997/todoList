@@ -5,6 +5,7 @@ import MyButton from "../../../UI/MyButton/myButton";
 import "./todoItem.scss";
 import { useState } from "react";
 import MyInput from "./../../../UI/MyInput/myInput";
+import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
 interface TodoItemProps {
   todo: ITodo;
   index: number;
@@ -40,14 +41,19 @@ function TodoItem(props: TodoItemProps) {
       </h3>
       <div className="TodoItem">
         <input type="checkbox" onClick={() => store.toggle(todo)} />
-        <MyButton onClick={clickEdit}>Edit</MyButton>
-        <MyButton onClick={() => store.deleteTodo(todo.id)}>Delete</MyButton>
+
+        <MyButton onClick={clickEdit}>
+          <SharedSvgSelector id="edit" />
+        </MyButton>
+        <MyButton onClick={() => store.deleteTodo(todo.id)}>
+          <SharedSvgSelector id="trash" />
+        </MyButton>
       </div>
       <div className="TodoItemEdit ">
-        {isEdit && <MyInput value={value} onChange={changeEditTitle} />}
+        {isEdit && <MyInput value={value} onChange={changeEditTitle}></MyInput>}
         {isEdit && (
           <MyButton value={value} onClick={saveEdit}>
-            Save
+            <SharedSvgSelector id="save" />
           </MyButton>
         )}
       </div>

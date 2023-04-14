@@ -1,12 +1,10 @@
 import { observer } from "mobx-react";
 import { FC, useContext, useState } from "react";
 import { AuthContext } from "../../../../Context/context";
-
 import { IAuth } from "../../../../types/types";
-
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "../../../UI/MyInput/myInput";
-
+import "./login.scss";
 const Login: FC = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
   const [admin, setAdmin] = useState("");
@@ -22,12 +20,24 @@ const Login: FC = () => {
     e.preventDefault();
     if (admin === "admin" && password === "111") {
       setIsAuth(true);
-      localStorage.setItem("auth", "true");
+      localStorage.setItem("authTodo", "true");
     }
   };
   return (
-    <>
-      <h1 style={{ display: "flex", justifyContent: "center" }}>Sign in </h1>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        Sign in{" "}
+      </h1>
       <form onSubmit={login}>
         <MyInput
           type="text"
@@ -43,7 +53,7 @@ const Login: FC = () => {
         />
         <MyButton>Sign in</MyButton>
       </form>
-    </>
+    </div>
   );
 };
 

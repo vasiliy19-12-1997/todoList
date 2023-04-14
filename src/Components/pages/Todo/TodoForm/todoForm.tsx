@@ -4,6 +4,7 @@ import { store } from "../../../../Store/store";
 
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
+import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
 
 const TodoForm: FC = () => {
   const [todo, setTodo] = useState("");
@@ -17,7 +18,9 @@ const TodoForm: FC = () => {
   return (
     <>
       <MyInput value={todo} onChange={changeInput} />
-      <MyButton onClick={createTodo}>Add TODO</MyButton>
+      <MyButton onClick={createTodo}>
+        <SharedSvgSelector id="addTodo" />
+      </MyButton>
     </>
   );
 };
