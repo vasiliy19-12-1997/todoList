@@ -3,13 +3,8 @@
   grid-template-columns: auto;
   margin: 10px;
   &S {
-    color: #fff;
-
-    background: var(#{--card-background-default});
     cursor: pointer;
-    min-width: 200px;
-    height: 30px;
     border-radius: 8px;
-    font: 16px bold;
+    font: 16px lbold;
   }
 }

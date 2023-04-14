@@ -17,7 +17,11 @@ const TodoForm: FC = () => {
   };
   return (
     <>
-      <MyInput value={todo} onChange={changeInput} />
+      <MyInput
+        placeholder="write something..."
+        value={todo}
+        onChange={changeInput}
+      />
       <MyButton onClick={createTodo}>
         <SharedSvgSelector id="addTodo" />
       </MyButton>

@@ -2,8 +2,35 @@
   justify-content: center;
   display: grid;
   margin-top: 20px;
-  &S {
-    height: 50px;
-    width: 100px;
+  select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    width: 200px;
+    font-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M5 0L0 5h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #999;
+  }
+
+  select option {
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+  }
+
+  select option:checked {
+    background-color: #f3f3f3;
+    color: #333;
   }
 }

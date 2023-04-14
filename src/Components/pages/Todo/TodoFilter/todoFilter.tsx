@@ -20,7 +20,7 @@ const TodoFilter: FC = () => {
   return (
     <>
       <MyInput
-        placeholder="Введите запрос"
+        placeholder="write a query..."
         value={value}
         onChange={changeQuery}
       />

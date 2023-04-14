@@ -16,8 +16,8 @@ const TodosPage: FC = () => {
   const TodoListObserver = observer(List);
   return (
     <>
-      <TodoFilter />
       <Header>Todo App</Header>
+      <TodoFilter />
       <TodoForm />
       <TodoListObserver
         items={store.todos}
