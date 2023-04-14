@@ -11,8 +11,17 @@ const TodoForm: FC = () => {
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
+  const createTodoPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter") {
+      store.createTodo(todo);
+    } else {
+      return null;
+    }
+    setTodo("");
+  };
   const createTodo = () => {
     store.createTodo(todo);
+
     setTodo("");
   };
   return (
@@ -21,6 +30,7 @@ const TodoForm: FC = () => {
         placeholder="write something..."
         value={todo}
         onChange={changeInput}
+        onKeyPress={createTodoPress}
       />
       <MyButton onClick={createTodo}>
         <SharedSvgSelector id="addTodo" />

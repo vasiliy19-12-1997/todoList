@@ -41,13 +41,11 @@ function TodoItem(props: TodoItemProps) {
       </h3>
       <div className="TodoItem">
         <div className="custom-checkbox">
-          <input
-            type="checkbox"
-            id="checkbox1"
-            name="checkbox1"
-            onClick={() => store.toggle(todo)}
-          />
-          <label htmlFor="checkbox1"></label>
+          <label className="checkbox">
+            <input type="checkbox" onClick={() => store.toggle(todo)} />
+            <span className="checkmark"></span>
+            <span className="label"></span>
+          </label>
         </div>
         <MyButton onClick={clickEdit}>
           <SharedSvgSelector id="edit" />

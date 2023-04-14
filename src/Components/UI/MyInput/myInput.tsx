@@ -7,6 +7,7 @@ interface MyInputProps {
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
   name?: string;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const MyInput: FC<MyInputProps> = ({ ...props }) => {
