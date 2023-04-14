@@ -12,7 +12,7 @@ const TodoFilter: FC = () => {
   };
   const changeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    store.getSearchQuery(value);
+    const a = store.getSearchQuery(value);
     setValue(value);
     console.log(`${store.filter.query} работает`);
   };
