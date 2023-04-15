@@ -1,7 +1,6 @@
-//мы пишем дженнерик T потому мы ожиданием массив элементов, но они могут быть любого типа
+import { observer } from "mobx-react-lite";
 import { store } from "../../Store/store";
 
-//тип T дает нам отрисовывать любые типы массивов(todos, users...)
 interface ListProps<T> {
   items: T[];
   renderItem: (item: T, index: number) => React.ReactNode;
@@ -17,4 +16,4 @@ function List<T>(props: ListProps<T>) {
     </>
   );
 }
-export default List;
+export default observer(List);

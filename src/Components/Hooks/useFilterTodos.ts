@@ -4,7 +4,7 @@ import { ITodo } from "../../types/types";
 export const useSortedTodos = (todos: ITodo[], sort: keyof ITodo) => {
   const sortedTodos = useMemo(() => {
     if (sort) {
-      return todos.sort((a, b) => {
+      return todos.slice().sort((a, b) => {
         const sortFromA = a[sort];
         const sortFromB = b[sort];
         if (typeof sortFromA === "string" && typeof sortFromB === "string") {
@@ -33,7 +33,7 @@ export const useFilterTodos = (
     return sortedTodos.filter((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
-  }, [sortedTodos, sort, query]);
+  }, [sortedTodos, query]);
   return sortedAndSearchTodos;
 };
 

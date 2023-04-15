@@ -1,11 +1,10 @@
-import { observer } from "mobx-react-lite";
+import { useState } from "react";
 import { store } from "../../../../Store/store";
 import { ITodo } from "../../../../types/types";
-import MyButton from "../../../UI/MyButton/myButton";
-import "./todoItem.scss";
-import { useState } from "react";
-import MyInput from "./../../../UI/MyInput/myInput";
 import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
+import MyButton from "../../../UI/MyButton/myButton";
+import MyInput from "./../../../UI/MyInput/myInput";
+import "./todoItem.scss";
 interface TodoItemProps {
   todo: ITodo;
   index: number;
@@ -65,4 +64,4 @@ function TodoItem(props: TodoItemProps) {
     </div>
   );
 }
-export default observer(TodoItem);
+export default TodoItem;

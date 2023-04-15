@@ -1,10 +1,10 @@
-import { observer } from "mobx-react";
 import { FC, useState } from "react";
 import { store } from "../../../../Store/store";
 
+import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
-import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
+import { observer } from "mobx-react-lite";
 
 const TodoForm: FC = () => {
   const [todo, setTodo] = useState("");
@@ -21,7 +21,6 @@ const TodoForm: FC = () => {
   };
   const createTodo = () => {
     store.createTodo(todo);
-
     setTodo("");
   };
   return (
@@ -39,4 +38,4 @@ const TodoForm: FC = () => {
   );
 };
 
-export default observer(TodoForm);
+export default TodoForm;
