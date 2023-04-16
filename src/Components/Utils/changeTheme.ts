@@ -1,6 +1,6 @@
 import { Theme } from "../../Context/context";
 
-export function changeCssRootVariables(theme: Theme) {
+export const changeCssRootVariables = (theme: Theme) => {
   const root = document.querySelector(":root") as HTMLElement;
 
   const components = [
@@ -17,4 +17,4 @@ export function changeCssRootVariables(theme: Theme) {
       `var(--${component}-${theme})`
     );
   });
-}
+};

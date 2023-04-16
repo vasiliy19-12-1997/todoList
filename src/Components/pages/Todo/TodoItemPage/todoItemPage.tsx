@@ -12,7 +12,7 @@ const TodoItemPage: FC = () => {
   const [todo, setTodo] = useState<ITodo | null>(null);
   const params = useParams<TodoItemPageParams>();
   const navigate = useNavigate();
-  const [fetching, isLoading, error] = useFetching(async () => {
+  const [fetching] = useFetching(async () => {
     const response: ITodo = await ServiceTodo.getTodosId(params.id);
     setTodo(response);
   });

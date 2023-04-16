@@ -12,7 +12,7 @@ interface TodoItemProps {
   deleteTodo?: (id: number) => void;
 }
 
-function TodoItem(props: TodoItemProps) {
+const TodoItem = (props: TodoItemProps) => {
   const { todo, index } = props;
 
   const [isEdit, setIsEdit] = useState(false);
@@ -64,5 +64,5 @@ function TodoItem(props: TodoItemProps) {
       </div>
     </div>
   );
-}
+};
 export default observer(TodoItem);

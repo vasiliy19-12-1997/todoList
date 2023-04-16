@@ -1,12 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { store } from "../../Store/store";
+import { FC } from "react";
 
 interface ListProps<T> {
   items: T[];
   renderItem: (item: T, index: number) => React.ReactNode;
 }
 
-function List<T>(props: ListProps<T>) {
+const List = <T,>(props: ListProps<T>) => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -15,5 +16,5 @@ function List<T>(props: ListProps<T>) {
       {props.items.map(props.renderItem)}
     </>
   );
-}
+};
 export default observer(List);

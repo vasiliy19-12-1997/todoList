@@ -1,8 +1,7 @@
 import { observer } from "mobx-react-lite";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { store } from "../../../../Store/store";
-
-import useFilterTodos from "../../../Hooks/useFilterTodos";
+import useFilterTodos from "../../../Hooks/useFilter";
 import List from "../../../List/list";
 import Header from "../../../UI/Header/header";
 import TodoFilter from "../TodoFilter/todoFilter";
@@ -16,8 +15,6 @@ const TodosPage: FC = () => {
     store.filter.query
   );
 
-  // const TodoFormObserver = observer(TodoForm);
-  // const TodoListObserver = observer(List);
   return (
     <>
       <Header>Todo App</Header>

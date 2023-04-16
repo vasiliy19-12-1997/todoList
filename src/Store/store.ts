@@ -17,7 +17,7 @@ class Store {
     this.filter.query = e.target.value;
   }
   toggle(todo: ITodo) {
-    const complete = (todo.completed = !todo.completed);
+    todo.completed = !todo.completed;
   }
   get unfinishedTodoCount() {
     return this.todos.filter((todo) => !todo.completed).length;
@@ -25,7 +25,7 @@ class Store {
 
   createTodo(title: string) {
     this.todos.push({ id: Math.random(), title, completed: false });
-    return localStorage.setItem("todos", JSON.stringify(store.todos));
+    localStorage.setItem("todos", JSON.stringify(store.todos));
   }
 
   deleteTodo(id: number) {
@@ -33,26 +33,12 @@ class Store {
       this.todos.findIndex((todo) => todo.id === id),
       1
     );
-    return localStorage.setItem("todos", JSON.stringify(this.todos));
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 
   saveEdit(todo: ITodo, value: string) {
     todo.title = value;
-    return localStorage.setItem("todos", JSON.stringify(this.todos));
-  }
-
-  get setSearchQuery() {
-    return (this.filter.query = "");
-  }
-  get sortTodo() {
-    return (this.filter.sort = "completed");
-  }
-  getSearchQuery(query: string) {
-    const searchTodo = this.todos.filter((todo) =>
-      todo.title.toLowerCase().includes(query.toLowerCase())
-    );
-    this.filter.query = query;
-    return searchTodo;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
   getLocaleTodos() {
     const stored = localStorage.getItem("todos");

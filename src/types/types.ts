@@ -25,6 +25,7 @@ export interface ISort {
   sort: keyof ITodo;
 }
 export interface IQuery {
+  /**запрос*/
   query: string;
 }
 export interface IFilter extends ISort, IQuery {}

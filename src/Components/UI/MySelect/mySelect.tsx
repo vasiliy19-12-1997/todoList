@@ -4,7 +4,7 @@ interface MySelectProps<T> {
   value: string;
   onChange: (sort: any) => void;
 }
-function MySelect<T>(props: MySelectProps<T>) {
+const MySelect = <T,>(props: MySelectProps<T>) => {
   const { options, value, onChange } = props;
   return (
     <div className="MySelect">
@@ -22,5 +22,5 @@ function MySelect<T>(props: MySelectProps<T>) {
       </select>
     </div>
   );
-}
+};
 export default MySelect;

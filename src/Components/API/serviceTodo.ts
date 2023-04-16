@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export default class ServiceTodo {
   static async getTodos(limit = 10, page = 1) {
     if (typeof JSON) {

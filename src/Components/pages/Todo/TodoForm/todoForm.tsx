@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { store } from "../../../../Store/store";
-
 import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelector";
 import MyButton from "./../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";

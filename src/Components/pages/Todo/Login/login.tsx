@@ -4,9 +4,8 @@ import { AuthContext } from "../../../../Context/context";
 import { IAuth } from "../../../../types/types";
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "../../../UI/MyInput/myInput";
-import "./login.scss";
 const Login: FC = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext) as IAuth;
+  const { setIsAuth } = useContext(AuthContext) as IAuth;
   const [admin, setAdmin] = useState("");
   const [password, setPassword] = useState("");
 
