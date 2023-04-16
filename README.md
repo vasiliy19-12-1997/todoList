@@ -8,7 +8,15 @@ todoList (React + Typescript + MobX) ☑️
 
 
 &nbsp;<br />
-<img src="https://user-images.githubusercontent.com/102950888/224048219-b5b25f6e-96ae-4ac3-81ca-8b65a928f51c.png" alt="Nested Task List gif demo" width=600 />
+<img src="https://user-images.githubusercontent.com/102950888/232326070-212d9c73-076f-45ba-9e64-106284c7d2f6.png" alt="Nested Task List gif demo" width=600 />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+<img src="https://user-images.githubusercontent.com/102950888/232326591-2e207e87-6830-4462-924d-d18840e47670.png" alt="Nested Task List gif demo" width=600 />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+<img src="![image](https://user-images.githubusercontent.com/102950888/232326070-212d9c73-076f-45ba-9e64-106284c7d2f6.png)" alt="Nested Task List gif demo" width=600 />
 &nbsp;<br />
 &nbsp;<br />
 
