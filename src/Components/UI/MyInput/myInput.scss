@@ -4,9 +4,22 @@
   margin: 20px 10px 20px 10px;
 
   &I {
+    font-size: 1.4rem;
+    @media (max-width: 1780px) {
+      font-size: 1.3rem;
+    }
+    @media (max-width: 1500px) {
+      font-size: 1.2rem;
+    }
+    @media (max-width: 1240px) {
+      font-size: 1.1rem;
+    }
+    @media (max-width: 800px) {
+      font-size: 0.9rem;
+    }
     border-radius: 8px;
     border: 2px solid #60916798;
-    padding: 5px;
+    padding: 8px;
     font: 18px bold;
   }
 }

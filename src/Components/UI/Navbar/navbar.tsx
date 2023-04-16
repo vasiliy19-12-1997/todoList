@@ -29,7 +29,7 @@ const Navbar = () => {
           Todos
         </Link>
         <div className="change-theme" onClick={changeTheme}>
-          <SharedSvgSelector id={`${active ? "light-theme" : "night-theme"}`} />
+          <SharedSvgSelector id={`${active ? "night-theme" : "light-theme"}`} />
         </div>
 
         {isAuth && (

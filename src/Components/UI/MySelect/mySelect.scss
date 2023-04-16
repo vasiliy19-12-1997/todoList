@@ -4,14 +4,24 @@
   margin-top: 20px;
   select {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 2px solid #60916798;
     border-radius: 4px;
     padding: 8px;
     width: 200px;
-    font-size: 16px;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    font-size: 1.2rem;
+    @media (max-width: 1780px) {
+      font-size: 1.1rem;
+    }
+    @media (max-width: 1500px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 1240px) {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 800px) {
+      font-size: 0.8rem;
+    }
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M5 0L0 5h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 8px center;

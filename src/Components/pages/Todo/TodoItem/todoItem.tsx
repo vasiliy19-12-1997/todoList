@@ -5,6 +5,7 @@ import { SharedSvgSelector } from "../../../Assets/Icons/Shared/sharedSvgSelecto
 import MyButton from "../../../UI/MyButton/myButton";
 import MyInput from "./../../../UI/MyInput/myInput";
 import "./todoItem.scss";
+import { observer } from "mobx-react-lite";
 interface TodoItemProps {
   todo: ITodo;
   index: number;
@@ -64,4 +65,4 @@ function TodoItem(props: TodoItemProps) {
     </div>
   );
 }
-export default TodoItem;
+export default observer(TodoItem);

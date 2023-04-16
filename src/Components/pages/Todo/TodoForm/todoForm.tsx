@@ -38,4 +38,4 @@ const TodoForm: FC = () => {
   );
 };
 
-export default TodoForm;
+export default observer(TodoForm);

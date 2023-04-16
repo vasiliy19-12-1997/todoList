@@ -9,6 +9,7 @@ class Store {
     makeAutoObservable(this);
     this.todos = this.getLocaleTodos();
   }
+
   changeSort(selectedSort: keyof ITodo) {
     this.filter.sort = selectedSort;
   }
@@ -17,15 +18,14 @@ class Store {
   }
   toggle(todo: ITodo) {
     const complete = (todo.completed = !todo.completed);
-    return complete;
   }
   get unfinishedTodoCount() {
     return this.todos.filter((todo) => !todo.completed).length;
   }
 
   createTodo(title: string) {
-    this.todos.push({ id: Math.random(), title, completed: true });
-    const todos = localStorage.setItem("todos", JSON.stringify(store.todos));
+    this.todos.push({ id: Math.random(), title, completed: false });
+    return localStorage.setItem("todos", JSON.stringify(store.todos));
   }
 
   deleteTodo(id: number) {
@@ -33,7 +33,7 @@ class Store {
       this.todos.findIndex((todo) => todo.id === id),
       1
     );
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+    return localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 
   saveEdit(todo: ITodo, value: string) {

@@ -1,8 +1,8 @@
-import { useMemo } from "react";
+import { useObserver } from "mobx-react-lite";
 import { ITodo } from "../../types/types";
 
 export const useSortedTodos = (todos: ITodo[], sort: keyof ITodo) => {
-  const sortedTodos = useMemo(() => {
+  const sortedTodos = useObserver(() => {
     if (sort) {
       return todos.slice().sort((a, b) => {
         const sortFromA = a[sort];
@@ -20,7 +20,7 @@ export const useSortedTodos = (todos: ITodo[], sort: keyof ITodo) => {
       });
     }
     return todos;
-  }, [sort, todos]);
+  });
   return sortedTodos;
 };
 export const useFilterTodos = (
@@ -29,11 +29,11 @@ export const useFilterTodos = (
   query: string
 ) => {
   const sortedTodos = useSortedTodos(todos, sort);
-  const sortedAndSearchTodos = useMemo(() => {
+  const sortedAndSearchTodos = useObserver(() => {
     return sortedTodos.filter((todo) =>
       todo.title.toLowerCase().includes(query.toLowerCase())
     );
-  }, [sortedTodos, query]);
+  });
   return sortedAndSearchTodos;
 };
 

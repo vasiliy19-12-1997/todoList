@@ -15,15 +15,14 @@ const TodosPage: FC = () => {
     store.filter.sort,
     store.filter.query
   );
-  useEffect(() => {
-    store.getTodos();
-  }, []);
-  const TodoFormObserver = observer(TodoForm);
+
+  // const TodoFormObserver = observer(TodoForm);
+  // const TodoListObserver = observer(List);
   return (
     <>
       <Header>Todo App</Header>
       <TodoFilter />
-      <TodoFormObserver />
+      <TodoForm />
       <List
         items={sortedAndSearchTodos}
         renderItem={(todo, index) => (
