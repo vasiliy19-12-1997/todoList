@@ -16,7 +16,7 @@ todoList (React + Typescript + MobX) ☑️
 &nbsp;<br />
 &nbsp;<br />
 &nbsp;<br />
-<img src="![image](https://user-images.githubusercontent.com/102950888/232326070-212d9c73-076f-45ba-9e64-106284c7d2f6.png)" alt="Nested Task List gif demo" width=600 />
+<img src="https://user-images.githubusercontent.com/102950888/232326070-212d9c73-076f-45ba-9e64-106284c7d2f6.png" alt="Nested Task List gif demo" width=600 />
 &nbsp;<br />
 &nbsp;<br />
 
